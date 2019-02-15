@@ -1,0 +1,82 @@
+
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>login</title>
+    <link rel="stylesheet" type="text/css" href="__STATIC__/admin/css/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="__STATIC__/admin/css/demo.css" />
+    <!--必要样式-->
+    <link rel="stylesheet" type="text/css" href="__STATIC__/admin/css/component.css" />
+    <script src="__STATIC__/admin/js/jquery-2.2.4.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="__STATIC__/admin/layui/css/layui.css"/>
+    <script type="text/javascript" src="__STATIC__/admin/layui/layui.js"></script>
+    <script src="__STATIC__/admin/js/default.js"></script>
+    <!--[if IE]>
+    <script src="__STATIC__/admin/js/html5.js"></script>
+    <![endif]-->
+</head>
+
+
+
+<body>
+<div class="container demo-1">
+    <div class="content">
+        <div id="large-header" class="large-header">
+            <canvas id="demo-canvas"></canvas>
+            <div class="logo_box">
+                <h3>欢迎你</h3>
+                <form action="{:url('login/login')}" class="f" method="post">
+                    <div class="input_outer">
+                        <span class="u_user"></span>
+                        <input name="logname" class="text" style="color: #FFFFFF !important" type="text" placeholder="请输入账户">
+                    </div>
+                    <div class="input_outer">
+                        <span class="us_uer"></span>
+                        <input name="logpass" class="text" style="color: #FFFFFF !important; position:absolute; z-index:100;"value="" type="password" placeholder="请输入密码">
+                    </div>
+                    <div class="mb2"><a class="act-but submit" href="javascript:void(0)" onclick="login()" style="color: #FFFFFF">登录</a></div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div><!-- /container -->
+<script src="__STATIC__/admin/js/TweenLite.min.js"></script>
+<script src="__STATIC__/admin/js/EasePack.min.js"></script>
+<script src="__STATIC__/admin/js/rAF.js"></script>
+<script src="__STATIC__/admin/js/demo-1.js"></script>
+<script type="text/javascript">
+    //表单提交
+    function login(){
+        if(checknulltip()){
+            $.ajax({
+                type: 'post',
+                url: "{:url('Login/login')}",
+                data: $(".f").serialize(),
+                success:function (data) {
+                    if(data.sta){
+                        //登录验证成功
+                        location.href="{:url('Admin/Index/index')}";
+                    }else{
+                        //验证失败
+                        layer.msg(data.tip);
+                    }
+                },
+                error:function(){
+                    layer.msg('请求失败！网络异常');
+                }
+            });
+        }
+    }
+    //回车键提交表单
+    document.onkeydown=function(event){
+        var e = event || window.event || arguments.callee.caller.arguments[0];
+        if(e && e.keyCode==13){ // enter 键
+            login();
+        }
+    }
+</script>
+</body>
+</html>

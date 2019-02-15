@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>小枯草-{$action}</title>
+    <meta name="keywords" content="小枯草，夏枯草，小草，草，春天，小人物，博客，新闻，网站开发">
+    <meta name="description" content="小枯草，个人网站，致力于各种最新类型网站开发，这里让你可以学到更多的最先进的网站技术！同时本网站也用于研发测试。">
+    <meta name="baidu-site-verification" content="g2Eg474DkZ" />
+
+    <link rel="stylesheet" href="__STATIC__/new/css/base.css">
+    <link rel="stylesheet" href="__STATIC__/new/css/style.css">
+</head>
+
+<body>
+
+<!--header-->
+{include file="public/header" /}
+
+
+<!--body-->
+<div class="content">
+    <div class="idx-banner">
+        <div class="fullSlide">
+            <div class="box">
+                <ul>
+                    {notempty name="lunbo"}
+                    {volist name="lunbo" id="v" key="k"}
+                    <li style="background:url({$v['picture']}) no-repeat center center; width: 1200px;height: 601px">
+                        <a href="javascript:;"></a>
+                    </li>
+                    {/volist}
+                    {/notempty}
+                </ul>
+            </div>
+            <div class="hbox">
+                <ul></ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="wrap">
+        <div class="cont-box">
+            <div class="cont-a fl">
+                <div class="cont-a1"><a href="" title="171892716">新手上路</a><span>|</span><a href="" title="171892716">官方Q群</a><span>|</span><a href="" title="171892716">官方Q群</a></div>
+                <div class="cont-a1"><a href="" title="171892716">新手上路</a><span>|</span><a href="" title="171892716">官方Q群</a><span>|</span><a href="" title="171892716">官方Q群</a></div>
+            </div>
+
+            <div class="cont-b fl">
+                <div class="cont-b1">
+                    <form action="{:url('index/index/search')}" method="post" id="have_search">
+                    <input type="text" id="search" class="cont-text fl" name="search" value="" placeholder="请输入搜索关键字">
+                    <input type="button" class="cont-btn fl" onclick="search_1()"  >
+                    </form>
+                </div>
+
+            </div>
+
+            <div class="cont-c fr">
+                <div class="cont-c1 fl">网站设计<a href="" title="171892716"><img src="__STATIC__/new/images/QQ.jpg"></a><a href="" title="171892716"><img src="__STATIC__/new/images/QQ.jpg"></a></div>
+                <div class="cont-c2 fr"></div>
+            </div>
+        </div>
+        <div class="kg-box">
+            <div class="idx-btm"><a href=""><img src="__STATIC__/new/upload/article.jpg"></a></div>
+            <!--<div class="kg-title">文章推荐</div>-->
+            <div class="kg">
+                <!--1-->
+                <a href="{:url('index/article/article_details',array('article_id'=>$hot1['article_id']))}"><div class="kg-a fl">
+                    <div class="kg-a1 fl"><img src="{$hot1['thumb']}" style="max-width: 198px;height: 200px"></div>
+                    <div class="kg-a2 fl">
+                        <div class="kg-a3">{$hot1['title']}</div>
+                        <div class="kg-a4">{$hot1['author']}</div>
+                        <div class="kg-a5">发表于 {$hot1['date']|date="Y-m-d",###}</div>
+                        <div class="kg-a6" >
+                            <span><img src="__STATIC__/new/images/col-c1.jpg">{$hot1['nums']}</span>
+                            <span><img src="__STATIC__/new/images/col-c2.jpg">{$hot1['hits']}</span>
+                            <em><img src="__STATIC__/new/images/col-c3.jpg"></em>
+                            <em><img src="__STATIC__/new/images/col-c4.jpg"></em>
+                            <em><img src="__STATIC__/new/images/col-c5.jpg"></em>
+                        </div>
+                        <div class="kg-t"><img src="__STATIC__/new/images/kg-t.png"></div>
+                    </div>
+                </div></a>
+
+                <!--2-->
+                <a href="{:url('index/article/article_details',array('article_id'=>$hot2['article_id']))}"><div class="kg-b fl">
+                    <div class="kg-b1 fl"><img src="{$hot2['thumb']}" style="width: auto;max-width:200px;height: 200px"></div>
+                    <div class="kg-a2 fl">
+                        <div class="kg-a3">{$hot2['title']}</div>
+                        <div class="kg-a4">{$hot2['author']}</div>
+                        <div class="kg-a5">发表于 {$hot2['date']|date="Y-m-d",###}</div>
+                        <div class="kg-a6">
+                            <span><img src="__STATIC__/new/images/col-c1.jpg">{$hot2['nums']}</span>
+                            <span><img src="__STATIC__/new/images/col-c2.jpg">{$hot1['hits']}</span>
+                            <em><img src="__STATIC__/new/images/col-c3.jpg"></em>
+                            <em><img src="__STATIC__/new/images/col-c4.jpg"></em>
+                            <em><img src="__STATIC__/new/images/col-c5.jpg"></em>
+                        </div>
+                        <div class="kg-t"><img src="__STATIC__/new/images/kg-t.png"></div>
+                    </div>
+                </div></a>
+            </div>
+            <div class="kg">
+                <!--3-->
+                <a href="{:url('index/article/article_details',array('article_id'=>$hot3['article_id']))}"><div class="kg-a fl">
+                    <div class="kg-a2 fl">
+                        <div class="kg-a3">{$hot3['title']}</div>
+                        <div class="kg-a4">{$hot3['author']}</div>
+                        <div class="kg-a5">发表于 {$hot3['date']|date="Y-m-d",###}</div>
+                        <div class="kg-a6">
+                            <span><img src="__STATIC__/new/images/col-c1.jpg">{$hot3['nums']}</span>
+                            <span><img src="__STATIC__/new/images/col-c2.jpg">{$hot1['hits']}</span>
+                            <em><img src="__STATIC__/new/images/col-c3.jpg"></em>
+                            <em><img src="__STATIC__/new/images/col-c4.jpg"></em>
+                            <em><img src="__STATIC__/new/images/col-c5.jpg"></em>
+                        </div>
+                        <div class="kg-y"><img src="__STATIC__/new/images/kg-y.png"></div>
+                    </div>
+                    <div class="kg-a1 fl"><img src="{$hot3['thumb']}" style="max-width: 197px;height: 199px;"></div>
+                </div></a>
+                <div class="kg-b fl">
+                    <!--4-->
+                    <a href="{:url('index/article/article_details',array('article_id'=>$hot4['article_id']))}"><div class="kg-c1 fl"><img src="{$hot4['thumb']}" style="width: 199px;height: 199px"></div>
+                        <div class="kg-a2 fl">
+                            <div class="kg-a3">{$hot4['title']}</div>
+                            <div class="kg-a4">{$hot4['author']}</div>
+                            <div class="kg-a5">发表于 {$hot4['date']|date="Y-m-d",###}</div>
+                            <div class="kg-a6">
+                                <span><img src="__STATIC__/new/images/col-c1.jpg">{$hot4['nums']}</span>
+                                <span><img src="__STATIC__/new/images/col-c2.jpg">{$hot1['hits']}</span>
+                                <em><img src="__STATIC__/new/images/col-c3.jpg"></em>
+                                <em><img src="__STATIC__/new/images/col-c4.jpg"></em>
+                                <em><img src="__STATIC__/new/images/col-c5.jpg"></em>
+                            </div>
+                            <div class="kg-t"><img src="__STATIC__/new/images/kg-t.png"></div>
+                        </div></a>
+                    <a href="{:url('index/article/article_details',array('article_id'=>$hot5['article_id']))}"><div class="kg-c2 fl"><img src="{$hot5['thumb']}" style="max-width: 199px;height: 199px"></div></a>
+                </div>
+
+
+            </div>
+            <div class="kg">
+                <!--5-->
+                <a href="{:url('index/article/article_details',array('article_id'=>$hot6['article_id']))}"><div class="kg-a fl">
+                    <div class="kg-a1 fl"><img src="{$hot6['thumb']}" style="max-width: 198px;height: 199px"></div>
+                    <div class="kg-a2 fl">
+                        <div class="kg-a3">{$hot6['title']}</div>
+                        <div class="kg-a4">{$hot6['author']}</div>
+                        <div class="kg-a5">发表于 {$hot3['date']|date="Y-m-d",###}</div>
+                        <div class="kg-a6">
+                            <span><img src="__STATIC__/new/images/col-c1.jpg">{$hot6['nums']}</span>
+                            <span><img src="__STATIC__/new/images/col-c2.jpg">{$hot1['hits']}</span>
+                            <em><img src="__STATIC__/new/images/col-c3.jpg"></em>
+                            <em><img src="__STATIC__/new/images/col-c4.jpg"></em>
+                            <em><img src="__STATIC__/new/images/col-c5.jpg"></em>
+                        </div>
+                        <div class="kg-t"><img src="__STATIC__/new/images/kg-t.png"></div>
+                    </div>
+                </div></a>
+
+                <!--6-->
+                <a href="{:url('index/article/article_details',array('article_id'=>$hot7['article_id']))}"><div class="kg-a fl">
+                    <div class="kg-a2 fl">
+                        <div class="kg-a3">{$hot7['title']}</div>
+                        <div class="kg-a4">{$hot7['author']}</div>
+                        <div class="kg-a5">发表于 {$hot7['date']|date="Y-m-d",###}</div>
+                        <div class="kg-a6">
+                            <span><img src="__STATIC__/new/images/col-c1.jpg">{$hot7['nums']}</span>
+                            <span><img src="__STATIC__/new/images/col-c2.jpg">{$hot1['hits']}</span>
+                            <em><img src="__STATIC__/new/images/col-c3.jpg"></em>
+                            <em><img src="__STATIC__/new/images/col-c4.jpg"></em>
+                            <em><img src="__STATIC__/new/images/col-c5.jpg"></em>
+                        </div>
+                        <div class="kg-y"><img src="__STATIC__/new/images/kg-y.png"></div>
+                    </div>
+                    <div class="kg-a1 fl"><img src="{$hot7['thumb']}" style="height: 200px;max-width: 200px"></div>
+                </div></a>
+                <!--7-->
+                <a href="{:url('index/article/article_details',array('article_id'=>$hot8['article_id']))}"><div class="kg-a2 fl">
+                    <div class="kg-a3">{$hot8['title']}</div>
+                    <div class="kg-a4">{$hot8['author']}</div>
+                    <div class="kg-a5">发表于 {$hot8['date']|date="Y-m-d",###}</div>
+                    <div class="kg-a6">
+                        <span><img src="__STATIC__/new/images/col-c1.jpg">{$hot8['nums']}</span>
+                        <span><img src="__STATIC__/new/images/col-c2.jpg">{$hot1['hits']}</span>
+                        <em><img src="__STATIC__/new/images/col-c3.jpg"></em>
+                        <em><img src="__STATIC__/new/images/col-c4.jpg"></em>
+                        <em><img src="__STATIC__/new/images/col-c5.jpg"></em>
+                    </div>
+                    <div class="kg-y"><img src="__STATIC__/new/images/kg-y.png"></div>
+                </div></a>
+            </div>
+            <div class="kg">
+                <!--8-->
+                <a href="{:url('index/article/article_details',array('article_id'=>$hot9['article_id']))}"><div class="kg-b fl">
+                    <div class="kg-a2 fl">
+                        <div class="kg-a3">{$hot9['title']}</div>
+                        <div class="kg-a4">{$hot9['author']}</div>
+                        <div class="kg-a5">发表于 {$hot9['date']|date="Y-m-d",###}</div>
+                        <div class="kg-a6">
+                            <span><img src="__STATIC__/new/images/col-c1.jpg">{$hot9['nums']}</span>
+                            <span><img src="__STATIC__/new/images/col-c2.jpg">{$hot1['hits']}</span>
+                            <em><img src="__STATIC__/new/images/col-c3.jpg"></em>
+                            <em><img src="__STATIC__/new/images/col-c4.jpg"></em>
+                            <em><img src="__STATIC__/new/images/col-c5.jpg"></em>
+                        </div>
+                        <div class="kg-y"><img src="__STATIC__/new/images/kg-y.png"></div>
+                    </div>
+                    <div class="kg-b1 fl"><img src="{$hot9['thumb']}" style="width: auto;max-width:400px;height: 200px"></div>
+                </div></a>
+
+                <!--9-->
+                <a href="{:url('index/article/article_details',array('article_id'=>$hot10['article_id']))}"><div class="kg-a fl">
+                    <div class="kg-a2 fl">
+                        <div class="kg-a3">{$hot10['title']}</div>
+                        <div class="kg-a4">{$hot10['author']}</div>
+                        <div class="kg-a5">发表于 {$hot10['date']|date="Y-m-d",###}</div>
+                        <div class="kg-a6">
+                            <span><img src="__STATIC__/new/images/col-c1.jpg">{$hot10['nums']}</span>
+                            <span><img src="__STATIC__/new/images/col-c2.jpg">{$hot1['hits']}</span>
+                            <em><img src="__STATIC__/new/images/col-c3.jpg"></em>
+                            <em><img src="__STATIC__/new/images/col-c4.jpg"></em>
+                            <em><img src="__STATIC__/new/images/col-c5.jpg"></em>
+                        </div>
+                        <div class="kg-y"><img src="__STATIC__/new/images/kg-y.png"></div>
+                    </div>
+                    <div class="kg-a1 fl"><img src="{$hot10['thumb']}" style="max-width: 198px;height: 200px"></div>
+                </div></a>
+
+
+            </div>
+        </div>
+
+
+        <div class="idx-btm"><a href=""><img src="__STATIC__/new/upload/active.jpg"></a></div>
+
+        <div class="kg-box">
+            <!--<div class="kg-title">论坛文章推荐</div>-->
+            <!--第一排的-->
+            <div class="kg">
+                <a href="{:url('index/active/active_details',array('active_id'=>$hot_actives[0]['active_id']))}">
+                    <div class="kg-a fl">
+                    <div class="kg-a2 fl">
+                        <div class="kg-a3">{$hot_actives[0]['active_name']}</div>
+                        <div class="kg-a4">{$hot_actives[0]['author']}</div>
+                        <div class="kg-a5">发表于 {$hot_actives[0]['date']|date="Y-m-d",###}</div>
+                        <div class="kg-a6">
+                            <span><img src="__STATIC__/new/images/col-c1.jpg">{$hot_actives[0]['nums']}</span>
+                            <span><img src="__STATIC__/new/images/col-c2.jpg">{$hot_actives[0]['hits']}</span>
+                            <em><img src="__STATIC__/new/images/col-c3.jpg"></em>
+                            <em><img src="__STATIC__/new/images/col-c4.jpg"></em>
+                            <em><img src="__STATIC__/new/images/col-c5.jpg"></em>
+                        </div>
+                        <div class="kg-y"><img src="__STATIC__/new/images/kg-y.png"></div>
+                    </div>
+                    <div class="kg-a1 fl"><img src="{$hot_actives[0]['thumb']}" style="max-width:197px; height:199px"></div>
+                </div>
+                </a>
+
+                <div class="kg-b fl">
+
+                    <a href="{:url('index/active/active_details',array('active_id'=>$hot_actives[1]['active_id']))}"><div class="kg-c1 fl"><img src="{$hot_actives[1]['thumb']}" style="max-width: 199px;height: 199px"></div>
+                        <div class="kg-a2 fl">
+                            <div class="kg-a3">{$hot_actives[1]['active_name']}</div>
+                            <div class="kg-a4">{$hot_actives[1]['author']}</div>
+                            <div class="kg-a5">发表于 {$hot_actives[1]['date']|date="Y-m-d",###}</div>
+                            <div class="kg-a6">
+                                <span><img src="__STATIC__/new/images/col-c1.jpg">{$hot_actives[1]['nums']}</span>
+                                <span><img src="__STATIC__/new/images/col-c2.jpg">{$hot_actives[1]['hits']}</span>
+                                <em><img src="__STATIC__/new/images/col-c3.jpg"></em>
+                                <em><img src="__STATIC__/new/images/col-c4.jpg"></em>
+                                <em><img src="__STATIC__/new/images/col-c5.jpg"></em>
+                            </div>
+                            <div class="kg-t"><img src="__STATIC__/new/images/kg-t.png"></div>
+                        </div>
+                    </a>
+
+                    <a href="{:url('index/active/active_details',array('active_id'=>$hot_actives[4]['active_id']))}"><div class="kg-c2 fl"><img src="{$hot_actives[5]['thumb']}" style="max-width: 199px;height: 199px" ></div></a>
+                </div>
+
+
+            </div>
+            <!--第二排的-->
+            <div class="kg">
+
+                <a href="{:url('index/active/active_details',array('active_id'=>$hot_actives[2]['active_id']))}"><div class="kg-a fl">
+                    <div class="kg-a1 fl"><img src="{$hot_actives[2]['thumb']}" style="max-width: 199px;height: 199px"></div>
+                    <div class="kg-a2 fl">
+                        <div class="kg-a3">{$hot_actives[2]['active_name']}</div>
+                        <div class="kg-a4">{$hot_actives[2]['author']}</div>
+                        <div class="kg-a5">发表于 {$hot_actives[2]['date']|date="Y-m-d",###}</div>
+                        <div class="kg-a6">
+                            <span><img src="__STATIC__/new/images/col-c1.jpg">{$hot_actives[2]['nums']}</span>
+                            <span><img src="__STATIC__/new/images/col-c2.jpg">{$hot_actives[2]['hits']}</span>
+                            <em><img src="__STATIC__/new/images/col-c3.jpg"></em>
+                            <em><img src="__STATIC__/new/images/col-c4.jpg"></em>
+                            <em><img src="__STATIC__/new/images/col-c5.jpg"></em>
+                        </div>
+                        <div class="kg-t"><img src="__STATIC__/new/images/kg-t.png"></div>
+                    </div>
+                </div></a>
+
+                <a href="{:url('index/active/active_details',array('active_id'=>$hot_actives[3]['active_id']))}"><div class="kg-a fl">
+                    <div class="kg-a2 fl">
+                        <div class="kg-a3">{$hot_actives[3]['active_name']}</div>
+                        <div class="kg-a4">{$hot_actives[3]['author']}</div>
+                        <div class="kg-a5">发表于 {$hot_actives[3]['date']|date="Y-m-d",###}</div>
+                        <div class="kg-a6">
+                            <span><img src="__STATIC__/new/images/col-c1.jpg">{$hot_actives[3]['nums']}</span>
+                            <span><img src="__STATIC__/new/images/col-c2.jpg">{$hot_actives[3]['hits']}</span>
+                            <em><img src="__STATIC__/new/images/col-c3.jpg"></em>
+                            <em><img src="__STATIC__/new/images/col-c4.jpg"></em>
+                            <em><img src="__STATIC__/new/images/col-c5.jpg"></em>
+                        </div>
+                        <div class="kg-y"><img src="__STATIC__/new/images/kg-y.png"></div>
+                    </div>
+                    <div class="kg-a1 fl"><img src="{$hot_actives[3]['thumb']}" style="max-width: 199px;height: 199px"></div>
+                </div></a>
+
+                <a href="{:url('index/active/active_details',array('active_id'=>$hot_actives[4]['active_id']))}"><div class="kg-a2 fl">
+                    <div class="kg-a3">{$hot_actives[4]['active_name']}</div>
+                    <div class="kg-a4">{$hot_actives[4]['author']}</div>
+                    <div class="kg-a5">发表于 {$hot_actives[4]['date']|date="Y-m-d",###}</div>
+                    <div class="kg-a6">
+                        <span><img src="__STATIC__/new/images/col-c1.jpg">{$hot_actives[4]['nums']}</span>
+                        <span><img src="__STATIC__/new/images/col-c2.jpg">{$hot_actives[4]['hits']}</span>
+                        <em><img src="__STATIC__/new/images/col-c3.jpg"></em>
+                        <em><img src="__STATIC__/new/images/col-c4.jpg"></em>
+                        <em><img src="__STATIC__/new/images/col-c5.jpg"></em>
+                    </div>
+                    <div class="kg-y"><img src="__STATIC__/new/images/kg-y.png"></div>
+                </div></a>
+            </div>
+
+
+        </div>
+
+        <div class="idx-btm"><a href=""></a></div>
+    </div><!--wrap-->
+</div>
+<!--请将以下这段代码放到网页中您想要显示固定图标的位置-->
+<div id="FloatDIV"
+     style="position: fixed;
+     top: 40%;
+     border-right: activeborder 1px none;
+     border-top: activeborder 1px none;
+     border-left: activeborder 1px none;
+      border-bottom: activeborder 1px none;
+       z-index:9999">
+    <img src="__STATIC__/new/images/yaoyiyao.gif">
+    <br>
+    <center><span>摇一摇进入手机端</span></center>
+
+</div>
+<script type="text/javascript">
+    var MarginLeft = 10;    //浮动层离浏览器右侧的距离
+    var MarginTop = 190;   //浮动层离浏览器顶部的距离
+    var Width = 130;            //浮动层宽度
+    var Heigth= 155;           //浮动层高度
+
+    //设置浮动层宽、高
+    function Set()
+    {
+        document.getElementByIdx_x("FloatDIV").style.width = Width + 'px';
+        document.getElementByIdx_x("FloatDIV").style.height = Heigth + 'px';
+    }
+
+    //实时设置浮动层的位置
+    function Move()
+    {
+        var b_top = window.pageYOffset
+            || document.documentElement.scrollTop
+            || document.body.scrollTop
+            || 0;
+        var b_width= document.body.clientWidth;
+        document.getElementByIdx_x("FloatDIV").style.top = b_top + MarginTop + 'px';
+        document.getElementByIdx_x("FloatDIV").style.left = b_width - Width - MarginLeft + 'px';
+        setTimeout("Move();",100);
+    }
+
+    Set();
+    Move();
+</script>
+
+<script>
+    //摇动速度
+    const SHAKE_SPEED = 300;
+    let lastTime = 0;//上次变化的时间
+    let x = y = z = lastX = lastY = lastZ = 0;//位置变量初始化
+
+    //位置感应事件
+    function  motionHandler(event) {
+        //将重力感应赋值给acceleration
+        let acceleration = event.accelerationIncludingGravity;
+        let curTime = Date.now();//取得当前时间
+        //如果当前摇动时间距离上一次摇动间隔超过两分钟
+        if ((curTime - lastTime) > 120) {
+            //获取时间间隔
+            let diffTime = curTime - lastTime;
+            //将当前时间赋值给上次摇动时间
+            lastTime = curTime;
+            //x方向移动距离
+            x = acceleration.x;
+            //y方向移动距离
+            y = acceleration.y;
+            //z方向移动距离
+            z = acceleration.z;
+            //计算摇动速度
+            //计算摇动速度并取绝对值，三个方向上的移动距离 除以 摇动时间等于速度
+            let speed = Math.abs(x + y + z - lastX - lastY - lastZ) / diffTime * 1000;
+            //如果摇动速度大于设定的速度，那么久跳转页面
+            if (speed > SHAKE_SPEED) {
+                //alert("你摇动了手机");
+                window.location.href="{:url('mobile/index/index')}"
+            }
+            //同时 将当前的位置赋值给上次位置变量
+            lastX = x;
+            lastY = y;
+            lastZ = z;
+        }
+    }
+    //检测设备是否支持位置感应
+    if(window.DeviceMotionEvent) {
+        window.addEventListener('devicemotion', motionHandler, false);
+    } else {
+        alert("你的设备不支持位置感应");
+    }
+</script>
+
+
+<!--footer-->
+{include file="public/footer" /}
+
+<script src="__STATIC__/new/js/jquery-1.11.1.min.js"></script>
+<script src="__STATIC__/new/js/jquery.SuperSlide.2.1.11.js"></script>
+<script src="__STATIC__/new/js/Action.js"></script>
+
+<script type="text/javascript">
+    $(function(){
+        var nav=$(".header"); //得到导航对象
+        var win=$(window); //得到窗口对象
+        var sc=$(document);//得到document文档对象。
+        win.scroll(function(){
+            if(sc.scrollTop()>=580){
+                nav.addClass("head-cut");
+                $(".head-cut").fadeIn(500);
+            }else{
+                nav.removeClass("head-cut");
+                $(".head-cut").fadeOut(500);
+            }
+        })
+    })
+</script>
+<script type="text/javascript">
+    $(function ($) {
+        $(".fullSlide").slide({
+            titCell: ".hbox ul",
+            mainCell: ".box ul",
+            effect: "fold",
+            mouseOverStop:false,
+            autoPlay: true,
+            delayTime: 500,
+            interTime: 3000,
+            autoPage: true,
+            trigger: "click",
+            startFun: function (i) {
+                var curLi = jQuery(".fullSlide .bd li").eq(i);
+                if (!!curLi.attr("_src")) {
+                    curLi.css("background-image", curLi.attr("_src")).removeAttr("_src")
+                }
+            }
+        });
+
+    });
+
+</script>
+</body>
+</html>

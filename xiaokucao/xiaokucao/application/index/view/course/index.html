@@ -1,0 +1,130 @@
+<!DOCTYPE html >
+<html >
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>小枯草-{$action}</title>
+    <link rel="stylesheet" href="__STATIC__/new/css/base.css">
+    <link rel="stylesheet" href="__STATIC__/new/css/style.css">
+</head>
+
+<body>
+{include file="public/header" /}
+
+<div class="content">
+    <div class="wrap">
+
+        <div class="tsm-height"></div>
+        <div class="course-banner"><img src="__STATIC__/new/upload/free.jpg"></div>
+
+
+
+        <div class="cou-a" >
+            <ul>
+                {notempty name="hot_actives"}
+                {volist name="hot_actives" id="v" key="k"}
+                <li><div class="cou-a1"><img src="{$v['thumb']}" style="max-width: 318px;height: 201px;" >
+                    <div class="cou-inside"><div class="cou-href"><a href="{:url('index/active/active_details',array('active_id'=>$v['active_id']))}">查看</a></div></div>
+                </div>
+                    <div class="act-a2">{$v['active_name']}</div>
+                </li>
+                {/volist}
+                {/notempty}
+            </ul>
+        </div>
+
+        <div class="cou-b">
+            <div class="cou-b-title">
+                <div class="cou-b1"><img src="__STATIC__/new/images/cou-b1.jpg">热帖</div>
+                <div class="cou-b2">
+                    <!--<div class="sort">排序</div>-->
+                </div>
+
+                <div class="cou-b3">
+                    <div class="dropdown">
+                        <span onclick="posting()">发帖</span>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="cou-c">
+            <ul>
+                {notempty name="bbs"}
+                {volist name="bbs" id="v" key="k"}
+
+
+                <a href="{:url('index/course/course_details',array('bbs_id'=>$v['bbs_id']))}">
+                <li>
+                    <div class="kil-fl fl"><img src="__STATIC__/new/upload/hot_bbs.jpg" style="height: 110px;width: 174px"></div>
+                    <div class="kil-fr fl">
+                        <div class="kil-r1" style="width: 218px;height: 58px;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;" title="{$v['bbs_title']}">
+                            {$v['bbs_title']}</div>
+                        <div class="kil-r2">{$v['author']}<span>阅读{$v['hits']}</span><span>发布{$v['date']|date="Y-m-d H:i",###}</span></div>
+
+
+                    </div>
+                </li>
+                </a>
+                {/volist}
+                {/notempty}
+            </ul>
+            {$bbs->render()}
+        </div>
+
+
+
+
+
+        <div class="act-e"><a href="{:url('index/course/course_details')}"><img src="__STATIC__/new/upload/act-f.jpg"></a></div>
+
+
+
+    </div>
+</div>
+
+{include file="public/footer" /}
+
+
+<script src="__STATIC__/new/js/jquery-1.11.1.min.js"></script>
+<script src="__STATIC__/new/js/Action.js"></script>
+<script>
+    $(".cou-a1").hover(function(){
+        $(this).find(".cou-inside").stop(true,true).animate({top:0},500);
+    },function(){
+        $(this).find(".cou-inside").stop(true,true).animate({top:201},500);
+    });
+</script>
+<script>
+    $(".sort").click(function(){
+        $(this).toggleClass("sort-cut")
+    })
+</script>
+<script>
+    $(".page a").click(function(){
+        $(this).addClass("page-cut").siblings().removeClass("page-cut")
+
+    })
+</script>
+
+<script>
+    $(".dropdown").bind({
+        click: function () {
+            $(this).find(".droplist").stop().slideDown();
+        },
+        mouseleave: function () {
+            $(this).find(".droplist").hide();
+        }
+    });
+    $(".dropdown .droplist li").click(function () {
+        $(this).parents(".dropdown").children("span").text($(this).text());
+        $(this).parents(".droplist").hide().attr("data-value", $(this).attr("data-id"));
+    });
+</script>
+<script type="text/javascript">
+    function posting() {
+       window.location.href="{:url('index/course/make_course')}"
+    }
+</script>
+</body>
+</html>

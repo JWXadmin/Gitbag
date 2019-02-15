@@ -1,0 +1,131 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>小枯草-论坛</title>
+    <link rel="stylesheet" href="__STATIC__/new/css/base.css">
+    <link rel="stylesheet" href="__STATIC__/new/css/style.css">
+</head>
+
+<body>
+{include file="public/header" /}
+
+<div class="content">
+    <div class="wrap">
+        <div class="tsm-height"></div>
+        <form action="" enctype="multipart/form-data" method="post" id="bbs" name="bbs">
+            <div class="account">
+                <div class="account-title">畅所欲言</div>
+                <div class="tsm-box">
+                    <div class="tsm-title">发帖请遵守相关法律法规！文明发言！
+                    </div>
+                    <div class="tsm-a" style="display:block;">
+                        <div class="tsm-a1">
+                            <div class="tsm-a2 fl">标题：</div>
+                            <div class="tsm-a3"><input type="text"  class="tsm-text1" name="title" value="" required="required"
+                                                       placeholder="请输入标题"      style="width: 465px"/></div>
+                        </div>
+                    </div>
+                    <div class="tsm-a" id="warning" style="display:none;">
+                        <div class="tsm-a1" style="color: red">
+                            <div class="tsm-a2 fl">温馨提示：</div>
+                            <div class="tsm-a3" id="warning_content">标题不能为空!!!</div>
+                        </div>
+                    </div>
+
+
+                    <textarea name="content" placeholder="请在此处输入内容，不超过800字" id="content" style="resize:none;width: 1000px;height: 400px;margin-top: 50px"></textarea>
+                </div>
+
+                <div class="tsm-href"><input type="button" class="tsm-btn" onclick="make_bbs()" value="保存"></div>
+
+            </div>
+
+    </form>
+</div>
+<input type="hidden" name="username" value="{$username}"/>
+{include file="public/footer" /}
+<!-- 配置文件 -->
+
+
+    <script type="text/javascript">
+        function make_bbs() {
+            var username=$('input[name="username"]').val();
+            if(username=='no_username'){
+                $(".mask").css({
+                    display: "block", height: $(document).height()
+                });
+                var $box = $('.login');
+                $box.css({
+                    display: "block"
+                });
+                $(".close").click(function () {
+                    $(".mask,.login").css("display", "none");
+                });
+                return false;
+            }
+            var title=$('input[name="title"]').val();
+            if(!title){
+                $("#warning_content").text("请输入标题！！！")
+                $("#warning").show();
+                return false;
+            }
+
+            var content=$("#content").val();
+            if(!content){
+                $("#warning_content").text("请输入内容！！！")
+                $("#warning").show();
+                return false;
+            }
+            $.ajax({
+                type:"post",
+                url:"{:url('index/course/make_course_in')}",
+                data:{
+                    title:title,
+                    content:content,
+                },
+                dataType:'json',
+                async:false,
+                success:function (data) {
+                   if(data.status==1){
+                       window.location.href=data.msg;
+                       //$("#warning_content").text("发布成功！你可以返回列表页查看。")
+                       //$("#warning").show();
+                       return false;
+                   }
+
+                   if(data.status==0){
+                       $("#warning_content").text("请先登录！")
+                       $("#warning").show();
+                       $(".mask").css({
+                           display: "block", height: $(document).height()
+                       });
+                       var $box = $('.login');
+                       $box.css({
+                           display: "block"
+                       });
+                       $(".close").click(function () {
+                           $(".mask,.login").css("display", "none");
+                       });
+                       return false;
+
+                   }
+
+                    if(data.status==2){
+                        $("#warning_content").text("发布失败，请稍后再试！")
+                        $("#warning").show();
+                        return false;
+                    }
+
+                }
+            })
+
+
+        }
+    </script>
+
+<script src="__STATIC__/new/js/Action.js"></script>
+
+
+</body>
+</html>

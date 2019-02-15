@@ -1,0 +1,199 @@
+<!DOCTYPE html >
+<html >
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>小枯草-{$action}</title>
+<link rel="stylesheet" href="__STATIC__/new/css/base.css">
+<link rel="stylesheet" href="__STATIC__/new/css/style.css">
+</head>
+
+<body>
+{include file="public/header" /}
+
+<div class="content">
+    <div class="wrap">
+            <div class="art-height"></div>
+            <div class="post">
+                   <div class="post-fl fl">
+                         <div class="post-a1">{$video['video_name']}</div>
+                         <div class="post-a2">{$video['author']}<span>{$video['date']|date="Y-m-d H:i:s",###}</span>
+                                               <div class="col-c">
+                                                    <span><img src="__STATIC__/new/images/col-c1.jpg">{$comments_num}</span>
+                                                    <span><img src="__STATIC__/new/images/col-c2.jpg">{$video['hits']}</span>
+                                                    <em><img src="__STATIC__/new/images/col-c3.jpg"></em>
+                                                    <em><img src="__STATIC__/new/images/col-c4.jpg"></em>
+                                                    <em><img src="__STATIC__/new/images/col-c5.jpg"></em>
+                                                </div>
+                         </div>
+                         <div class="post-a3">
+                               <span>{$video['cate_name']}</span>
+
+                         </div>
+                         <div class="post-a4">
+
+                             <video width="679" height="409" controls>
+                                 <source src="{$video['video_url']}" type="video/mp4">
+                             </video>
+                             <!--<img src="__STATIC__/new/upload/post-a2.jpg">-->
+
+                         </div>
+
+                         <div class="post-b">
+                              <?php print_r($video['content']) ?>
+                         </div>
+
+                       <div class="det-b">
+                           <div class="det-title"><img src="__STATIC__/new/images/cou-b1.jpg">在线评论</div>
+                           <div class="det-b1">
+                               <textarea id="write_comment" class="det-area post-area"></textarea>
+                               {if condition="$username eq 'no_username'"}
+                               <div class="det-b2"><a href="javascript:void(0)" onclick="need_login()">登录</a>发表</div>
+                               {/if}
+                           </div>
+                           <div class="det-b3"><input type="button" onclick="send_comment()" class="det-btn" value="发表"></div>
+                       </div>
+                       <div class="skt">
+                           <div class="skt-title">
+                               <span class="skt-cut">默认评论</span><em>|</em><span>最新评论</span>
+                           </div>
+                           <div class="skt-tab">
+                               <div class="skt-btm">
+                                   <ul class="skt-ul">
+                                       {volist name="comments" id="v" key="k"}
+                                       <li>
+                                           <div class="skt-a1"><img src="{$v['user_info']['avator']}" style="width: 35px;height:38px">{$v['date']|date="Y-m-d H:i",###}
+                                               <div class="menu"><a href="">
+                                                   <img src="__STATIC__/new/images/menu.jpg" >
+                                               </a></div></div>
+                                           <div class="skt-a2"><?php print_r($v['content']) ?></div>
+                                           <div class="skt-a3"><a href=""><img src="__STATIC__/new/upload/det-b.jpg">我要点评</a>
+                                               <div class="menu-a">
+                                                   <span><img src="__STATIC__/new/images/menu-a1.jpg">{$v['good_hits']}</span>
+                                                   <span><img src="__STATIC__/new/images/menu-a2.jpg">{$v['bad_hits']}</span>
+                                               </div>
+                                           </div>
+                                       </li>
+                                       {/volist}
+
+                                   </ul>
+
+                                   {$comments->render()}
+
+                               </div>
+
+                               <div class="skt-btm hide">
+                                   222
+                               </div>
+                           </div>
+                           <!--这了是评论-->
+           </div>      
+                   </div><!--post-fl-->
+                   <div class="post-fr fr">
+                           <div class="post-r">
+                                   <div class="post-r1"><center><img src="__STATIC__/uploads/lantai.png" style="max-width: 248px;height: 174px"></center></div>
+                                   <div class="post-r2">兰台公子</div>
+                                   <div class="post-r3">20篇文章<span>|</span>35条评论</div>
+                                   <div class="post-r4"><a href="">+关注</a><span>|</span><a href="">私信</a></div>
+                           </div>
+
+
+
+                           <div class="post-t"><a href=""><img src="__STATIC__/new/upload/post-a3.jpg"></a></div>
+                           <div class="post-y">
+                                 <div class="post-y1"><img src="__STATIC__/new/images/cou-b1.jpg">推荐帖子</div>
+                                 <ul>
+                                     {volist name="four" id="v" key="k"}
+                                     <a href="{:url('index/article/article_details',array('article_id'=>$v['article_id']))}"><li>
+                                         <div class="post-y2"><img src="{$v['thumb']}" style="width: 248px;height:139px"></div>
+                                         <div class="post-y3">{$v['title']}</div>
+
+                                     </li></a>
+                                     {/volist}
+           
+                                 </ul>
+                           </div>
+                   </div>
+            </div>
+    </div>      
+</div>
+<input type="hidden" name="username" value="{$username}">
+{include file="public/footer" /}
+
+<script src="__STATIC__/new/js/jquery-1.11.1.min.js"></script>
+<script src="__STATIC__/new/js/Action.js"></script>
+<script type="text/javascript">
+    function need_login() {
+        $(".mask").css({
+            display: "block", height: $(document).height()
+        });
+        var $box = $('.login');
+        $box.css({
+            display: "block"
+        });
+        $(".close").click(function () {
+            $(".mask,.login").css("display", "none");
+        });
+    }
+
+    function send_comment() {
+        var username=$('input[name="username"]').val();
+
+
+        console.log(username);
+        if(username==='no_username'){
+            $("#content").text("登录后才可以评论哟！");
+            $("#myModal").show();
+            return false;
+        }
+        var comment=$("#write_comment").val();
+        var parent_id={$video['video_id']};
+        if (!comment){
+            $("#content").text("请输入评论！");
+            $("#myModal").show();
+            return false;
+        }
+        //调用ajax 将评论写入数据库
+        $.ajax({
+            type:"post",
+            url:"{:url('index/comment/add_comment')}",
+            data:{content:comment,table:"comment",article_id:parent_id,mould_id:2},
+            dataType:"json",
+            async:false,
+            success:function (data) {
+                if(data.status==0){
+                    $("#content").text(data.msg);
+                    $("#myModal").show();
+                }
+                if(data.status==1){
+                    $("#content").text(data.msg);
+                    $("#myModal").show();
+                    window.setTimeout(close_it,3000);
+                    window.setTimeout(refesh_it,3000);
+
+                }
+
+                if(data.status==2){
+                    $("#content").text(data.msg);
+                    $("#myModal").show();
+                }
+
+                //这里需要写一个定时函数
+
+            }
+
+        })
+    }
+
+    function refesh_it() {
+        window.location.reload();
+    }
+</script>
+<script>
+    $(".skt-title span").click(function(){
+		 $(this).addClass("skt-cut").siblings().removeClass("skt-cut"),
+		 $(".skt-tab .skt-btm").hide().eq($(".skt-title span").index(this)).show()
+    })
+</script>
+</body>
+</html>
+

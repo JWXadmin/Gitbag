@@ -1,0 +1,147 @@
+<!DOCTYPE html >
+<html >
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>小枯草-{$action}</title>
+    <link rel="stylesheet" href="__STATIC__/new/css/base.css">
+    <link rel="stylesheet" href="__STATIC__/new/css/style.css">
+</head>
+
+<body>
+{include file="public/header" /}
+
+<div class="content">
+    <div class="wrap">
+        <div class="art-height"></div>
+        <div class="art-box">
+            <div class="art-b">
+                {volist name="hots" id="v" key="k"}
+                {if condition="$k eq 1"}
+                <a href="{:url('index/article/article_details',array('article_id'=>$v['article_id']))}">
+                    <div class="art-b1 mr-30 fl">
+                    <img src="{$v.thumb}" style="width: 483px;height:331px">
+                    <div class="art-inside">{$v.title}</div>
+                </div>
+                </a>
+                {/if}
+                {if condition="$k eq 2"}
+                <a href="{:url('index/article/article_details',array('article_id'=>$v['article_id']))}">
+                    <div class="art-b1 fl">
+                        <img src="{$v['thumb']}" style="width: 483px;height:331px">
+                        <div class="art-inside">{$v['title']}</div>
+                    </div></a>
+                {/if}
+                {/volist}
+
+
+            </div>
+            <div class="art-c">
+                <div class="art-fl fl">
+                    <div class="ru-title art-title">
+                        <div class="cou-b1"><img src="__STATIC__/new/images/cou-b1.jpg">焦点文章</div>
+                        <div class="ru-a1">
+                            <!--<div class="sort">排序</div>-->
+                        </div>
+                        <div class="ru-a2">
+                            <div class="dropdown">
+                                <span>情感</span>
+                                <ul data-value="" class="droplist">
+                                    <li data-id="1">全部</li>
+                                    <li data-id="2">服饰</li>
+                                    <li data-id="3">最新</li>
+                                    <li data-id="4">提问</li>
+                                    <li data-id="5">约会技巧</li>
+                                    <li data-id="6">热门文章</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tjk">
+                        <ul class="art-ul">
+                            {volist name="articles" id="v" key="k"}
+                            <a href="{:url('index/article/article_details',array('article_id'=>$v['article_id']))}">
+                                <li>
+                                    <div class="art-list">
+                                        <div class="art-d fl">
+                                            <img src="{$v.thumb}" style="width: 194px;height: 121px">
+                                        </div>
+                                        <div class="art-e fl">
+                                            <div class="col-b1">{$v['title']}</div>
+                                            <div class="col-b2">{$v['author']}<span>{$v['date']|date="Y-m-d",###}</span></div>
+                                            <div class="col-b3">{$v['title']}</div>
+                                        </div>
+                                        <div class="art-f">
+                                            <span><img src="__STATIC__/new/images/col-c1.jpg">{$v['comments_num']}</span>
+                                            <span><img src="__STATIC__/new/images/col-c2.jpg">{$v['hits']}</span>
+                                            <em><img src="__STATIC__/new/images/col-c3.jpg"></em>
+                                            <em><img src="__STATIC__/new/images/col-c4.jpg"></em>
+                                            <em><img src="__STATIC__/new/images/col-c5.jpg"></em>
+                                        </div>
+                                    </div>
+                                    <div class="art-g">
+                                    </div>
+                                </li>
+                            </a>
+                            {/volist}
+
+                        </ul>
+                    </div>
+                    {$articles->render()}
+                    <!--<div class="more"><a href="{:url('index/article/article_details')}">查看更多>></a></div>-->
+
+                </div>
+
+                <div class="art-fr fr">
+                    <div class="post-y art-gg">
+                        <div class="post-y1"><img src="__STATIC__/new/images/cou-b1.jpg">最新文章</div>
+                        <ul>
+                            {volist name="four" id="v" key="k"}
+
+                            <a href="{:url('index/article/article_details',array('article_id'=>$v['article_id']))}"><li>
+                                <div class="post-y2"><img src="{$v['thumb']}" style="width: 248px;height: 139px"></div>
+                                <div class="post-y3">{$v['title']}</div>
+
+                            </li></a>
+
+                            {/volist}
+
+
+                        </ul>
+                    </div>
+                    <div class="fish"><a href="{:url('index/article/article_details')}"><img src="__STATIC__/new/upload/ru-c1.png"></a></div>
+                    <div class="fish"><a href="{:url('index/article/article_details')}"><img src="__STATIC__/new/upload/ru-c1.png"></a></div>
+                </div>
+            </div><!--art-c-->
+
+        </div>
+    </div>
+</div>
+
+{include file="public/footer" /}
+
+
+<script src="__STATIC__/new/js/jquery-1.11.1.min.js"></script>
+<script src="__STATIC__/new/js/Action.js"></script>
+<script>
+    $(".sort").click(function(){
+        $(this).toggleClass("sort-cut")
+    })
+</script>
+<script>
+    $(".dropdown").bind({
+        click: function () {
+            $(this).find(".droplist").stop().slideDown();
+        },
+        mouseleave: function () {
+            $(this).find(".droplist").hide();
+        }
+    });
+    $(".dropdown .droplist li").click(function () {
+        $(this).parents(".dropdown").children("span").text($(this).text());
+        $(this).parents(".droplist").hide().attr("data-value", $(this).attr("data-id"));
+    });
+</script>
+
+</body>
+</html>
+

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+    <title>资讯首页</title>
+    <link href="__STATIC__/mobile/fonts/iconfont.css" rel="stylesheet"/>
+    <link href="__STATIC__/mobile/css/bass.css" rel="stylesheet"/>
+    <link href="__STATIC__/mobile/css/index.css" rel="stylesheet"/>
+</head>
+<body>
+<div>
+    <header>
+        <div class="header">
+            <h1>资讯</h1>
+            <a href="{:url('mobile/index/index')}" class="return"><i class="icon-16"></i></a>
+        </div>
+    </header>
+    <div style="height: 2.5rem;"></div>
+</div>
+<!-- 资讯 information 首页头条-->
+<div class="firmList information">
+    <!-- 导航分类 -->
+    <div id="carousel" class="carousel-nav">
+        <ul class="infor-xnav">
+            <li class="pitch"><a href="javascript:;">最新</a></li>
+            <li><a href="{:url('mobile/information/information_2')}">各地</a></li>
+            <li><a href="javascript:;">故事</a></li>
+            <li><a href="javascript:;">企业聚焦</a></li>
+            <li><a href="javascript:;">品读</a></li>
+            <li><a href="javascript:;">映像</a></li>
+            <li><a href="javascript:;">热点投资</a></li>
+            <li><a href="javascript:;">未来</a></li>
+        </ul>
+    </div>
+    <!-- 资讯内容列表 -->
+    <ul class="infor-content">
+        <li>
+            <a href="{:url('mobile/information/information_3')}">
+                <div class="infor-c-img"><img src="__STATIC__/mobile/images/zx1.jpg"></div>
+                <div class="infor-c-text">
+                    <h1>佛山二中获得全国中学生水科技发明大奖</h1>
+                    <p>广佛都市网讯 5月20日-22日，在第三届广东省环保科技创意大赛决赛中，佛山二中104班林文俐、104班冯嘉怡和103班麦明好同学的创意设计《海绵城市次干道绿化带设计》以超过90多分的成绩获得全省高中组项目第一名，同时获得了今年7月参加广州世界青少年环保巅峰会的入场资格。</p>
+                </div>
+            </a>
+            <div class="scanTime">
+                <span>20&nbsp;浏览</span>
+                <span>12&nbsp;评论</span>
+                <span class="fr">佛山采云协会</span>
+                <span class="fr">2016-05-04</span>
+                <div class="cl"></div>
+            </div>
+        </li>
+        <li>
+            <a href="javascript:;">
+                <div class="infor-c-img"><img src="__STATIC__/mobile/images/zx2.jpg"></div>
+                <div class="infor-c-text">
+                    <h1>乐从“520”电商青年创业节今日启动</h1>
+                    <p>由乐从电子商务协会、佛山市电子商务协会家具分会共同主办的“520”乐从电商青年创业节在乐从中欧电商城举行</p>
+                </div>
+            </a>
+            <div class="scanTime">
+                <span>2000&nbsp;浏览</span>
+                <span>1265&nbsp;评论</span>
+                <span class="fr">广州农业协会</span>
+                <span class="fr">2016-05-04</span>
+                <div class="cl"></div>
+            </div>
+        </li>
+        <li>
+            <a href="javascript:;">
+                <div class="infor-c-img"><img src="__STATIC__/mobile/images/j-banner03.jpg"></div>
+                <div class="infor-c-text">
+                    <h1>佛山市“互联网”生产业联盟成立仪式单位座谈会</h1>
+                    <p>佛山市互联网产业。</p>
+                </div>
+            </a>
+            <div class="scanTime">
+                <span>10&nbsp;浏览</span>
+                <span>0&nbsp;评论</span>
+                <span class="fr">佛山协会</span>
+                <span class="fr">2016-05-04</span>
+                <div class="cl"></div>
+            </div>
+        </li>
+        <li>
+            <a href="javascript:;">
+                <div class="infor-c-img"><img src="__STATIC__/mobile/images/j-banner04.jpg"></div>
+                <div class="infor-c-text">
+                    <h1>买家组团购房</h1>
+                    <p>今天天气非常好，在佛山禅城区中心发现两只小猫咪，非常可爱，今天天气非常好，在佛山禅城区中心发现两只小猫咪，非常可爱。</p>
+                </div>
+            </a>
+            <div class="scanTime">
+                <span>20&nbsp;浏览</span>
+                <span>12&nbsp;评论</span>
+                <span class="fr">佛山采云协会</span>
+                <span class="fr">2016-05-04</span>
+                <div class="cl"></div>
+            </div>
+        </li>
+    </ul>
+</div>
+</div>
+<!-- 引入js资源 -->
+<script type="text/javascript" src="__STATIC__/mobile/js/zepto.min.js"></script>
+<script type="text/javascript" src="__STATIC__/mobile/js/iscroll.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $(".infot-liBtn").click(function(){
+            $(".infot-liBtn").toggleClass("infot-liBtn2").siblings("li.infot-liOff").toggleClass("infot-liOn");
+        });
+        $(".infor-xnav li").click(function(){
+            $(this).addClass("pitch").siblings().removeClass("pitch");
+        });
+    });
+</script>
+<script>
+    window.addEventListener('load',function(){
+        var $carousel = document.getElementById('carousel'),
+            $ul = $carousel.querySelector('ul'),
+            liArray = $carousel.querySelectorAll('li'),
+            liNum = liArray.length;
+
+        $ul.style.width = (liArray[0].clientWidth + 10)*8 +"px";
+
+        var carousel=new iScroll("carousel",{hScrollbar:false, vScrollbar:false, vScroll: false});
+
+    });
+</script>
+</body>
+</html>

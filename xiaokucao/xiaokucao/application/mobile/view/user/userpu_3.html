@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+    <title>个人会员中心</title>
+    <link href="__STATIC__/mobile/fonts/iconfont.css" rel="stylesheet"/>
+    <link href="__STATIC__/mobile/css/bass.css" rel="stylesheet"/>
+    <link href="__STATIC__/mobile/css/index.css" rel="stylesheet"/>
+</head>
+<body>
+{include file="public/nav" /}
+<!-- 个人中心 user-->
+<div class="setBg-box"></div>
+<div class="cy-user">
+    <div class="userPu">
+        <!-- 头像部分 -->
+        <div class="userPu-h">
+            <div class="user-h-img"><img src="__STATIC__/mobile/images/ts4.jpg"></div>
+            <div class="user-h-text">
+                <div class="user-name">碧琳<span class="icon-vip4"></span></div>
+                <div class="user-association">90后创业社-副社长</div>
+            </div>
+            <!--<a href="editData.html" class="compile-btn compile-btn-user"><i class="icon-uniE93E"></i></a>-->
+        </div>
+        <div class="user-circle">
+            <a href="{:url('mobile/circle/index')}">
+                <span>圈子</span>
+                <ul>
+                    <li><img src="__STATIC__/mobile/images/user-img4.png"></li>
+                    <li><img src="__STATIC__/mobile/images/user-img2.png"></li>
+                    <li><img src="__STATIC__/mobile/images/user-img3.png"></li>
+                    <li><img src="__STATIC__/mobile/images/user-img4.png"></li>
+                </ul>
+                <i class="icon-uniE926"></i>
+            </a>
+        </div>
+        <!-- 头像部分 end-->
+        <!-- 资料板块 -->
+        <div class="datum-box">
+            <ul class="datum-list">
+                <!--<li class="dropdown">
+                    <h1 data-toggle="dropdown" class="vtitle"><b>我的钱包</b><span class="user-money">￥1.00</span></h1>
+                </li>-->
+                <li class="dropdown">
+                    <a href="firmDetails2gr.html">
+                        <h1 data-toggle="dropdown" class="vtitle"><i class="ba-color ba-color2 icon-uniE953"></i><b>个人详情</b><span class="icon-uniE926"></span></h1>
+                    </a>
+                </li>
+            </ul>
+            <a href="validation.html" class="btn btn-max btn-green">交换名片</a>
+        </div>
+        <!-- 资料板块 end-->
+    </div>
+</div>
+<!-- 个人中心 user end-->
+<!-- 引用的js文件 -->
+<script src="__STATIC__/mobile/js/custom.js"></script>
+</body>
+</html>

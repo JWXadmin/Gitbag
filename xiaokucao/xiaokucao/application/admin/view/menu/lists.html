@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {include file="public:head"/}
+    <link href="__STATIC__/admin/css/plugins/treeview/bootstrap-treeview.css" rel="stylesheet">
+    <script src="__STATIC__/admin/js/plugins/treeview/bootstrap-treeview.js"></script>
+    <script src="__STATIC__/admin/js/demo/treeview-demo.js"></script>
+</head>
+<body>
+<div class="wrapper wrapper-content animated fadeInRightBig">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="ibox">
+                <div class="ibox-title">
+                    <h5>菜单管理列表</h5>
+                    <div class="ibox-tools" style="float:left;margin:0 20px">
+                        <input type="button" value="添加菜单" style="margin:0 10px ;width: 60px;"
+                               id="adduser" onclick="go_next()" class="btn btn-primary btn-xs">
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <table class="table table-striped table-hover no-margin">
+                        <thead>
+                        <tr>
+                            <th width="3%" class="text-center">ID</th>
+                            <th width="15%" class="text-center">路径</th>
+                            <th width="15%" class="text-center" style="text-align: left">名称</th>
+                            <th width="10%" class="text-center">等级</th>
+                            <th width="10%" class="text-center">操作</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {empty name="menu"}
+                        <tr>
+                            <td colspan="8" class="text-center">暂无数据</td>
+                        </tr>
+                        {else/}
+                        {volist name="menu" id="v" key="k"}
+                        <tr  class="hide_{$v['pid']} showMenu" data-pid="{$v['id']}"
+                                {if condition="$v.level neq 1"}
+                                style="display: none;background-color: #a5a5ca"
+
+                                {/if}
+                        >
+                            <td class="text-center">{$v.id}</td>
+                            <td class="text-center">{$v.name}</td>
+                            <td style="text-align: left">
+                                {if condition="$v.level neq 1"}
+
+                                {:str_repeat('-',$v['level']*10)}
+
+                                {/if}
+
+                                {$v.title}</td>
+                            <td class="text-center" >{$v['level']}</td>
+                            <td class="text-center">
+                                <a href="javascript:void(0)"  class="label label-primary set">暂无</a>
+                            </td>
+
+                        </tr>
+                        {/volist}
+                        {/empty}
+                        </tbody>
+                    </table>
+                </div>
+                <div class="container-fluid text-center">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    function go_next() {
+        window.location.href="{:url('add_menu')}"
+    }
+
+    $(".showMenu").click(function () {
+        var id  = $(this).data('pid');
+        $('.hide_'+id).toggle();
+
+    })
+
+</script>
+{include file="public:footer"/}
+</body>
+</html>

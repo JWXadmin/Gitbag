@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>小枯草-{$action}</title>
+    <link rel="stylesheet" href="__STATIC__/new/css/base.css">
+    <link rel="stylesheet" href="__STATIC__/new/css/style.css">
+</head>
+
+<body>
+
+<!--header-->
+{include file="public/header" /}
+
+
+<!--body-->
+<div class="content">
+    <div class="idx-banner">
+        <div class="fullSlide">
+            <div class="box">
+                <ul>
+                    <li style="background:url(__STATIC__/new/uploads/xingkong.jpg) no-repeat center center;">
+                        <a href="javascript:;"></a></li>
+                    <li style="background:url(__STATIC__/new/uploads/tongjiang.jpg) no-repeat center center;">
+                        <a href="javascript:;"></a></li>
+                    <li style="background:url(__STATIC__/new/upload/ban.jpg) no-repeat center center;">
+                        <a href="javascript:;"></a></li>
+                </ul>
+            </div>
+            <div class="hbox">
+                <ul></ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="wrap">
+        <div class="cont-box">
+            <div class="cont-a fl">
+                <div class="cont-a1"><a href="">新手上路</a><span>|</span><a href="">联系我</a><span>|</span><a href="">联系我</a></div>
+                <div class="cont-a1"><a href="">新手上路</a><span>|</span><a href="">联系我</a><span>|</span><a href="">联系我</a></div>
+            </div>
+
+            <div class="cont-b fl">
+                <div class="cont-b1">
+                    <input type="text" class="cont-text fl" value="">
+                    <input type="button" class="cont-btn fl">
+                </div>
+
+            </div>
+
+            <div class="cont-c fr">
+                <div class="cont-c1 fl">技术文章<a href=""><img src="__STATIC__/new/images/QQ.jpg"></a><a href=""><img src="__STATIC__/new/images/QQ.jpg"></a></div>
+                <div class="cont-c2 fr"></div>
+            </div>
+        </div>
+        <!--最热文章推荐-->
+        <div class="kg-box">
+            <div class="kg-title">热门文章推荐</div>
+            {volist name="hot_articles"  key="m" id="n"}
+            <!--第一排文章  2-->
+            <div class="kg">
+
+                {if condition="$m eq 0"}
+                <a href="{:url('index/article/article_details',array('article_id'=>$n['article_id']))}">
+                    <div class="kg-a fl">
+                        <div class="kg-a1 fl">
+                            <img src="{$n['thumb']}">
+                            <!--<img src="__STATIC__/new/upload/kg-a1.jpg">-->
+                        </div>
+                        <div class="kg-a2 fl">
+                            <div class="kg-a3">{$n['title']}</div>
+                            <div class="kg-a4">{$n['author']}</div>
+                            <div class="kg-a5">发表于 {$n['date']|date="Y-m-d",###}</div>
+                            <div class="kg-a6">
+                                <span><img src="__STATIC__/new/images/col-c1.jpg">{$n['hits']}</span>
+                                <span><img src="__STATIC__/new/images/col-c2.jpg">3</span>
+                                <em><img src="__STATIC__/new/images/col-c3.jpg"></em>
+                                <em><img src="__STATIC__/new/images/col-c4.jpg"></em>
+                                <em><img src="__STATIC__/new/images/col-c5.jpg"></em>
+                            </div>
+                            <div class="kg-t"><img src="__STATIC__/new/images/kg-t.png"></div>
+                        </div>
+
+                    </div>
+                </a>
+                {/if}
+
+                <!---->
+                {if condition="$m eq 1"}
+                <a href="{:url('index/article/article_details',array('article_id'=>$n['article_id']))}">
+                    <div class="kg-b fl">
+                        <div class="kg-b1 fl"><img src="{$n['thumb']}"></div>
+                        <div class="kg-a2 fl">
+                            <div class="kg-a3">{$n['title']}</div>
+                            <div class="kg-a4">{$n['author']}</div>
+                            <div class="kg-a5">发表于 {$n['date']|date="Y-m-d",###}</div>
+                            <div class="kg-a6">
+                                <span><img src="__STATIC__/new/images/col-c1.jpg">{$n['hits']}</span>
+                                <span><img src="__STATIC__/new/images/col-c2.jpg">3</span>
+                                <em><img src="__STATIC__/new/images/col-c3.jpg"></em>
+                                <em><img src="__STATIC__/new/images/col-c4.jpg"></em>
+                                <em><img src="__STATIC__/new/images/col-c5.jpg"></em>
+                            </div>
+                            <div class="kg-t"><img src="__STATIC__/new/images/kg-t.png"></div>
+                        </div>
+                    </div></a>
+                {/if}
+            </div>
+            <!--第二排文章  3-->
+            <div class="kg">
+                {if condition="$m eq 2"}
+                <a href="{:url('index/article/article_details',array('article'=>$n['article_id']))}">
+                    <div class="kg-a fl">
+                        <div class="kg-a2 fl">
+                            <div class="kg-a3">{$n['title']}</div>
+                            <div class="kg-a4">{$n['author']}</div>
+                            <div class="kg-a5">发表于 {$n['date']|date="Y-m-d",###}</div>
+                            <div class="kg-a6">
+                                <span><img src="__STATIC__/new/images/col-c1.jpg">{$n['hits']}</span>
+                                <span><img src="__STATIC__/new/images/col-c2.jpg">3</span>
+                                <em><img src="__STATIC__/new/images/col-c3.jpg"></em>
+                                <em><img src="__STATIC__/new/images/col-c4.jpg"></em>
+                                <em><img src="__STATIC__/new/images/col-c5.jpg"></em>
+                            </div>
+                            <div class="kg-y"><img src="__STATIC__/new/images/kg-y.png"></div>
+                        </div>
+                        <div class="kg-a1 fl"><img src="__STATIC__/new/upload/kg-a3.jpg"></div>
+                    </div></a>
+                {/if}
+                <div class="kg-b fl">
+                    <!---->
+                    {if condition="$m eq 3"}
+                    <a href="{:url('index/article/article_details',array('article_id'=>$n['article_id']))}">
+                        <div class="kg-c1 fl">
+                            <img src="{$n['thumb']}">
+                        </div>
+                        <div class="kg-a2 fl">
+                            <div class="kg-a3">{$n['title']}</div>
+                            <div class="kg-a4">{$n['author']}</div>
+                            <div class="kg-a5">发表于 {$n['date']|date="Y-m-d",###}</div>
+                            <div class="kg-a6">
+                                <span><img src="__STATIC__/new/images/col-c1.jpg">{$n['hits']}</span>
+                                <span><img src="__STATIC__/new/images/col-c2.jpg">3</span>
+                                <em><img src="__STATIC__/new/images/col-c3.jpg"></em>
+                                <em><img src="__STATIC__/new/images/col-c4.jpg"></em>
+                                <em><img src="__STATIC__/new/images/col-c5.jpg"></em>
+                            </div>
+                            <div class="kg-t"><img src="__STATIC__/new/images/kg-t.png"></div>
+                        </div>
+                    </a>
+                    {/if}
+                    <!---->
+
+                    <a href=""><div class="kg-c2 fl"><img src="__STATIC__/new/upload/kg-a5.jpg"></div></a>
+
+                </div>
+
+            </div>
+            <!--第三排文章  3-->
+            <div class="kg">
+                {if condition="$m eq 4"}
+                <a href="{:url('index/article/article_details',array('article_id'=>$n['article_id']))}"><div class="kg-a fl">
+                    <div class="kg-a1 fl"><img src="{$n['thumb']}"></div>
+                    <div class="kg-a2 fl">
+                        <div class="kg-a3">{$n['title']}</div>
+                        <div class="kg-a4">{$n['author']}</div>
+                        <div class="kg-a5">发表于 {$n['date']|date="Y-m-d",###}</div>
+                        <div class="kg-a6">
+                            <span><img src="__STATIC__/new/images/col-c1.jpg">{$n['hits']}</span>
+                            <span><img src="__STATIC__/new/images/col-c2.jpg">3</span>
+                            <em><img src="__STATIC__/new/images/col-c3.jpg"></em>
+                            <em><img src="__STATIC__/new/images/col-c4.jpg"></em>
+                            <em><img src="__STATIC__/new/images/col-c5.jpg"></em>
+                        </div>
+                        <div class="kg-t"><img src="__STATIC__/new/images/kg-t.png"></div>
+                    </div>
+                </div></a>
+                {/if}
+                <!---->
+                {if condition="$m eq 5"}
+                <a href="{:url('index/article/article_details',array('article_id'=>$n['article_id']))}"><div class="kg-a fl">
+                    <div class="kg-a2 fl">
+                        <div class="kg-a3">{$n['title']}</div>
+                        <div class="kg-a4">{$n['author']}</div>
+                        <div class="kg-a5">发表于 {$n['date']|date="Y-m-d",###}</div>
+                        <div class="kg-a6">
+                            <span><img src="__STATIC__/new/images/col-c1.jpg">{$n['hits']}</span>
+                            <span><img src="__STATIC__/new/images/col-c2.jpg">3</span>
+                            <em><img src="__STATIC__/new/images/col-c3.jpg"></em>
+                            <em><img src="__STATIC__/new/images/col-c4.jpg"></em>
+                            <em><img src="__STATIC__/new/images/col-c5.jpg"></em>
+                        </div>
+                        <div class="kg-y"><img src="__STATIC__/new/images/kg-y.png"></div>
+                    </div>
+                    <div class="kg-a1 fl"><img src="__STATIC__/new/upload/kg-a6.jpg"></div>
+                </div></a>
+                {/if}
+                <!---->
+                {if condition="$m eq 6"}
+                <a href="{:url('index/article/article_details',array('article_id'=>$n['article_id']))}"><div class="kg-a2 fl">
+                    <div class="kg-a3">{$n['title']}</div>
+                    <div class="kg-a4">{$n['author']}</div>
+                    <div class="kg-a5">发表于 {$n['date']|date="Y-m-d",###}</div>
+                    <div class="kg-a6">
+                        <span><img src="__STATIC__/new/images/col-c1.jpg">{$n['hits']}</span>
+                        <span><img src="__STATIC__/new/images/col-c2.jpg">3</span>
+                        <em><img src="__STATIC__/new/images/col-c3.jpg"></em>
+                        <em><img src="__STATIC__/new/images/col-c4.jpg"></em>
+                        <em><img src="__STATIC__/new/images/col-c5.jpg"></em>
+                    </div>
+                    <div class="kg-y"><img src="__STATIC__/new/images/kg-y.png"></div>
+                </div></a>
+                {/if}
+            </div>
+            <!--第四排文章  2-->
+            <div class="kg">
+                <a href="{:url('index/article/article_details')}"><div class="kg-b fl">
+                    <div class="kg-a2 fl">
+                        <div class="kg-a3">只要生活有期盼，一个人也可以很好。</div>
+                        <div class="kg-a4">水果大人</div>
+                        <div class="kg-a5">发表于 2015-11-02</div>
+                        <div class="kg-a6">
+                            <span><img src="__STATIC__/new/images/col-c1.jpg">0</span>
+                            <span><img src="__STATIC__/new/images/col-c2.jpg">3</span>
+                            <em><img src="__STATIC__/new/images/col-c3.jpg"></em>
+                            <em><img src="__STATIC__/new/images/col-c4.jpg"></em>
+                            <em><img src="__STATIC__/new/images/col-c5.jpg"></em>
+                        </div>
+                        <div class="kg-y"><img src="__STATIC__/new/images/kg-y.png"></div>
+                    </div>
+                    <div class="kg-b1 fl"><img src="__STATIC__/new/upload/kg-a2.jpg"></div>
+                </div></a>
+                <!---->
+                <a href="{:url('index/article/article_details')}"><div class="kg-a fl">
+                    <div class="kg-a2 fl">
+                        <div class="kg-a3">只要生活有期盼，一个人也可以很好。</div>
+                        <div class="kg-a4">水果大人</div>
+                        <div class="kg-a5">发表于 2015-11-02</div>
+                        <div class="kg-a6">
+                            <span><img src="__STATIC__/new/images/col-c1.jpg">0</span>
+                            <span><img src="__STATIC__/new/images/col-c2.jpg">3</span>
+                            <em><img src="__STATIC__/new/images/col-c3.jpg"></em>
+                            <em><img src="__STATIC__/new/images/col-c4.jpg"></em>
+                            <em><img src="__STATIC__/new/images/col-c5.jpg"></em>
+                        </div>
+                        <div class="kg-y"><img src="__STATIC__/new/images/kg-y.png"></div>
+                    </div>
+                    <div class="kg-a1 fl"><img src="__STATIC__/new/upload/kg-a8.jpg"></div>
+                </div></a>
+            </div>
+            {/volist}
+        </div>
+        <!--达人推荐-->
+        <div class="rng-box">
+            <div class="kg-title">达人推荐</div>
+            <ul class="rng-ul">
+                <li><div class="rng-a"><img src="__STATIC__/new/upload/rng.jpg"></div>
+                    <div class="rng-b"><a href=""><img src="__STATIC__/new/images/more.jpg"></a></div></li>
+                <li><div class="rng-a"><img src="__STATIC__/new/upload/rng.jpg"></div>
+                    <div class="rng-b"><a href=""><img src="__STATIC__/new/images/more.jpg"></a></div></li>
+                <li><div class="rng-a"><img src="__STATIC__/new/upload/rng.jpg"></div>
+                    <div class="rng-b"><a href=""><img src="__STATIC__/new/images/more.jpg"></a></div></li>
+                <li><div class="rng-a"><img src="__STATIC__/new/upload/rng.jpg"></div>
+                    <div class="rng-b"><a href=""><img src="__STATIC__/new/images/more.jpg"></a></div></li>
+                <li><div class="rng-a"><img src="__STATIC__/new/upload/rng.jpg"></div>
+                    <div class="rng-b"><a href=""><img src="__STATIC__/new/images/more.jpg"></a></div></li>
+            </ul>
+        </div>
+        <!--最新文章推荐-->
+        <div class="kg-box">
+            <div class="kg-title">最新文章推荐</div>
+            <div class="kg">
+                <a href="{:url('index/article/article_details')}"><div class="kg-a fl">
+                    <div class="kg-a2 fl">
+                        <div class="kg-a3">只要生活有期盼，一个人也可以很好。</div>
+                        <div class="kg-a4">水果大人</div>
+                        <div class="kg-a5">发表于 2015-11-02</div>
+                        <div class="kg-a6">
+                            <span><img src="__STATIC__/new/images/col-c1.jpg">0</span>
+                            <span><img src="__STATIC__/new/images/col-c2.jpg">3</span>
+                            <em><img src="__STATIC__/new/images/col-c3.jpg"></em>
+                            <em><img src="__STATIC__/new/images/col-c4.jpg"></em>
+                            <em><img src="__STATIC__/new/images/col-c5.jpg"></em>
+                        </div>
+                        <div class="kg-y"><img src="__STATIC__/new/images/kg-y.png"></div>
+                    </div>
+                    <div class="kg-a1 fl"><img src="__STATIC__/new/upload/kg-a3.jpg"></div>
+                </div></a>
+                <div class="kg-b fl">
+                    <a href="{:url('index/article/article_details')}"><div class="kg-c1 fl"><img src="__STATIC__/new/upload/kg-a4.jpg"></div>
+                        <div class="kg-a2 fl">
+                            <div class="kg-a3">只要生活有期盼，一个人也可以很好。</div>
+                            <div class="kg-a4">水果大人</div>
+                            <div class="kg-a5">发表于 2015-11-02</div>
+                            <div class="kg-a6">
+                                <span><img src="__STATIC__/new/images/col-c1.jpg">0</span>
+                                <span><img src="__STATIC__/new/images/col-c2.jpg">3</span>
+                                <em><img src="__STATIC__/new/images/col-c3.jpg"></em>
+                                <em><img src="__STATIC__/new/images/col-c4.jpg"></em>
+                                <em><img src="__STATIC__/new/images/col-c5.jpg"></em>
+                            </div>
+                            <div class="kg-t"><img src="__STATIC__/new/images/kg-t.png"></div>
+                        </div></a>
+                    <a href="{:url('index/article/article_details')}"><div class="kg-c2 fl"><img src="__STATIC__/new/upload/kg-a5.jpg"></div></a>
+                </div>
+
+
+            </div>
+            <div class="kg">
+                <a href="{:url('index/article/article_details')}"><div class="kg-a fl">
+                    <div class="kg-a1 fl"><img src="__STATIC__/new/upload/kg-a5.jpg"></div>
+                    <div class="kg-a2 fl">
+                        <div class="kg-a3">只要生活有期盼，一个人也可以很好。</div>
+                        <div class="kg-a4">水果大人</div>
+                        <div class="kg-a5">发表于 2015-11-02</div>
+                        <div class="kg-a6">
+                            <span><img src="__STATIC__/new/images/col-c1.jpg">0</span>
+                            <span><img src="__STATIC__/new/images/col-c2.jpg">3</span>
+                            <em><img src="__STATIC__/new/images/col-c3.jpg"></em>
+                            <em><img src="__STATIC__/new/images/col-c4.jpg"></em>
+                            <em><img src="__STATIC__/new/images/col-c5.jpg"></em>
+                        </div>
+                        <div class="kg-t"><img src="__STATIC__/new/images/kg-t.png"></div>
+                    </div>
+                </div></a>
+
+                <a href="{:url('index/article/article_details')}"><div class="kg-a fl">
+                    <div class="kg-a2 fl">
+                        <div class="kg-a3">只要生活有期盼，一个人也可以很好。</div>
+                        <div class="kg-a4">水果大人</div>
+                        <div class="kg-a5">发表于 2015-11-02</div>
+                        <div class="kg-a6">
+                            <span><img src="__STATIC__/new/images/col-c1.jpg">0</span>
+                            <span><img src="__STATIC__/new/images/col-c2.jpg">3</span>
+                            <em><img src="__STATIC__/new/images/col-c3.jpg"></em>
+                            <em><img src="__STATIC__/new/images/col-c4.jpg"></em>
+                            <em><img src="__STATIC__/new/images/col-c5.jpg"></em>
+                        </div>
+                        <div class="kg-y"><img src="__STATIC__/new/images/kg-y.png"></div>
+                    </div>
+                    <div class="kg-a1 fl"><img src="__STATIC__/new/upload/kg-a6.jpg"></div>
+                </div></a>
+                <a href="{:url('index/article/article_details')}"><div class="kg-a2 fl">
+                    <div class="kg-a3">只要生活有期盼，一个人也可以很好。</div>
+                    <div class="kg-a4">水果大人</div>
+                    <div class="kg-a5">发表于 2015-11-02</div>
+                    <div class="kg-a6">
+                        <span><img src="__STATIC__/new/images/col-c1.jpg">0</span>
+                        <span><img src="__STATIC__/new/images/col-c2.jpg">3</span>
+                        <em><img src="__STATIC__/new/images/col-c3.jpg"></em>
+                        <em><img src="__STATIC__/new/images/col-c4.jpg"></em>
+                        <em><img src="__STATIC__/new/images/col-c5.jpg"></em>
+                    </div>
+                    <div class="kg-y"><img src="__STATIC__/new/images/kg-y.png"></div>
+                </div></a>
+            </div>
+
+
+        </div>
+
+        <div class="idx-btm"><a href=""><img src="__STATIC__/new/upload/act-f.jpg"></a></div>
+    </div><!--wrap-->
+</div>
+
+
+
+<!--footer-->
+{include file="public/footer" /}
+
+<script src="__STATIC__/new/js/jquery-1.11.1.min.js"></script>
+<script src="__STATIC__/new/js/jquery.SuperSlide.2.1.11.js"></script>
+<script src="__STATIC__/new/js/Action.js"></script>
+
+<script type="text/javascript">
+    $(function(){
+        var nav=$(".header"); //得到导航对象
+        var win=$(window); //得到窗口对象
+        var sc=$(document);//得到document文档对象。
+        win.scroll(function(){
+            if(sc.scrollTop()>=580){
+                nav.addClass("head-cut");
+                $(".head-cut").fadeIn(500);
+            }else{
+                nav.removeClass("head-cut");
+                $(".head-cut").fadeOut(500);
+            }
+        })
+    })
+</script>
+<script type="text/javascript">
+    $(function ($) {
+        $(".fullSlide").slide({
+            titCell: ".hbox ul",
+            mainCell: ".box ul",
+            effect: "fold",
+            mouseOverStop:false,
+            autoPlay: true,
+            delayTime: 500,
+            interTime: 3000,
+            autoPage: true,
+            trigger: "click",
+            startFun: function (i) {
+                var curLi = jQuery(".fullSlide .bd li").eq(i);
+                if (!!curLi.attr("_src")) {
+                    curLi.css("background-image", curLi.attr("_src")).removeAttr("_src")
+                }
+            }
+        });
+
+    });
+
+</script>
+</body>
+</html>

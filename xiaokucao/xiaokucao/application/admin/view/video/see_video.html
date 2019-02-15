@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {include file="public:head"/}
+    <link href="__STATIC__/admin/css/plugins/treeview/bootstrap-treeview.css" rel="stylesheet">
+    <script src="__STATIC__/admin/js/plugins/treeview/bootstrap-treeview.js"></script>
+    <script src="__STATIC__/admin/js/demo/treeview-demo.js"></script>
+</head>
+<body>
+<div class="wrapper wrapper-content animated fadeInRightBig">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="ibox">
+                <div class="ibox-title">
+                    <h5>视频编辑</h5>
+                    <div class="ibox-tools" style="float:left;margin:0 20px">
+
+                    </div>
+                </div>
+                <center>
+                <div class="ibox-content">
+
+                      <h1>{$video['video_name']}</h1>
+                      <p>{$video['author']}</p>
+                      <p>{$video['date']|date="Y-m-d H:i:s",###}</p>
+                    <div style="width: 320px;height: 240px;margin-bottom: 50px">
+                          <video width="320" height="240" controls>
+                        <source src="{$video['video_url']}" type="video/mp4">
+                        <object data="{$video['video_url']}" width="320" height="240">
+                        </object>
+                    </video>
+                    </div>
+                      <div style="margin-top: 380px">
+                          <?php print_r($video['content'])?>
+                      </div>
+
+                </div>
+                </center>
+            </div>
+        </div>
+    </div>
+</div>
+
+{include file="public:footer"/}
+</body>
+</html>

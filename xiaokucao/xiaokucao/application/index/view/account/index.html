@@ -1,0 +1,455 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>小枯草-{$action}</title>
+    <link rel="stylesheet" href="__STATIC__/new/css/base.css">
+    <link rel="stylesheet" href="__STATIC__/new/css/style.css">
+</head>
+
+<body>
+{include file="public/header" /}
+
+<div class="content">
+    <div class="wrap">
+        <div class="tsm-height"></div>
+        <form action="" enctype="multipart/form-data" method="post" id="userinfo" name="userinfo">
+        <div class="account">
+            <div class="account-title">账户设置</div>
+            <div class="tsm-box">
+                <div class="tsm-title">个人资料
+                </div>
+                <div class="tsm-a" style="display:block;">
+                    <div class="tsm-a1">
+                        <div class="tsm-a2 fl">用户名：</div>
+                        <div class="tsm-a3"><input type="text" readonly class="tsm-text1" name="my_username" value="{$userinfo['username']}"></div>
+                    </div>
+
+                    <div class="tsm-a1">
+                        <div class="tsm-a2 fl">性别：</div>
+                        <div class="tsm-a4">
+                            {if $userinfo['sex']==1}
+                            <input type="radio" name="sex" checked="checked"  value="1" >男
+
+                            <input type="radio" name="sex" value="2" />女
+                            {else/}
+                            <input type="radio" name="sex"   value="1" >男
+
+                            <input type="radio" name="sex" checked="checked" value="2" />女
+                            {/if}
+                        </div>
+                    </div>
+
+                    <div class="tsm-a1">
+                        <div class="tsm-a2 fl">职业：</div>
+                        <div class="tsm-a3"><input type="text" class="tsm-text1" name="job" value="{$userinfo['job']}"></div>
+                    </div>
+
+                    <div class="tsm-a1">
+                        <div class="tsm-a2 fl">所在城市：</div>
+                        <div class="tsm-a3"><input type="text" class="tsm-text1" name="city" value="{$userinfo['city']}"></div>
+                    </div>
+
+                    <div class="tsm-a1">
+                        <div class="tsm-a2 fl">生日：</div>
+                        <div class="tsm-a3"><input type="text" class="tsm-text1" name="birthday" value="{$userinfo['birthday']}"></div>
+                    </div>
+                    <div class="tsm-a1">
+                        <div class="tsm-a2 fl">个人主页：</div>
+                        <div class="tsm-a3"><input type="text" class="tsm-text1" name="own_home" value="{$userinfo['own_home']}"></div>
+                    </div>
+
+
+                </div>
+            </div>
+
+            <div class="tsm-box">
+                <div class="tsm-title">头像修改1
+                </div>
+                <div class="tsm-b">
+                    <label>建议头像选择120x120，大小限制60kb</label>
+                    <div id="preview1" class="fl">
+                        {if condition="$userinfo['avator'] !=''"}
+                        <img src="{$userinfo['avator']}" id="showImg" width=120 height=120 >
+
+                        {else/}
+                        <img src="data:image/jpeg;base64,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" id="showImg" width=120 height=120 >
+                        {/if}
+                    </div>
+                    <div class="tt-put fl">
+                        <input type="file" class="file" name="imgfile" id="imgfile" placeholder="请选择文件">
+                        <input type="hidden" name="avator_info" value="">
+                        <input type="button" class="tt-b" onclick="uploads()" value="保存图片"></div>
+
+                </div>
+            </div>
+
+
+
+
+            <div class="tsm-box">
+                <div class="tsm-title">邮箱</div>
+                <div class="tsm-a">
+                    <div class="tsm-a1">
+                        <div class="tsm-a2 fl">邮箱：</div>
+                        {if $userinfo['email']}
+                        <div class="tsm-c1">{$userinfo['email']}</div>
+                        {else/}
+                        <div class="tsm-c1">暂无</div>
+                        {/if}
+                    </div>
+
+                    <div class="tsm-a1">
+                        <div class="tsm-a2 fl">新邮箱：</div>
+                        <div class="tsm-a3"><input type="text" class="tsm-text1" name="email" value=""></div>
+                    </div>
+
+
+
+                </div>
+            </div>
+            <div class="tsm-box">
+                <div class="tsm-title">密码
+                </div>
+                <div class="tsm-a">
+
+
+                    <div class="tsm-a1">
+                        <div class="tsm-a2 fl">新密码：</div>
+                        <div class="tsm-a3"><input type="password" class="tsm-text1" name="my_password" value=""></div>
+                    </div>
+                    <div class="tsm-a1">
+                        <div class="tsm-a2 fl">确认密码：</div>
+                        <div class="tsm-a3"><input type="password" class="tsm-text1" name="my_repassword" value=""></div>
+                    </div>
+
+
+                </div>
+            </div>
+
+            <div class="tsm-box">
+                <div class="tsm-title">关联账户</div>
+                <div class="tsm-a">
+                    <div class="tsm-a1">
+                        <div class="tsm-a2 fl">微信：</div>
+                        <div class="tsm-a3"><input type="text" class="tsm-text1" name="weixin" value="{$userinfo['weixin']}"></div>
+                    </div>
+
+                    <div class="tsm-a1">
+                        <div class="tsm-a2 fl">微博：</div>
+                        <div class="tsm-a3"><input type="text" class="tsm-text1" name="weibo" value="{$userinfo['weibo']}"></div>
+                    </div>
+                    <div class="tsm-a1">
+                        <div class="tsm-a2 fl">QQ：</div>
+                        <div class="tsm-a3"><input type="text" class="tsm-text1" name="qq" value="{$userinfo['qq']}"></div>
+                    </div>
+
+
+                </div>
+            </div>
+            <div class="tsm-href"><input type="button" class="tsm-btn" onclick="ok()" value="保存"></div>
+
+        </div>
+    </div>
+        </form>
+</div>
+
+{include file="public/footer" /}
+
+
+<script src="__STATIC__/new/js/Action.js"></script>
+<script>
+    $(".tsm-title").click(function(){
+        $(this).toggleClass("tsm-t2").parent().siblings().find(".tsm-title").removeClass("tsm-t2"),
+            $(this).next().slideToggle().parent().siblings().find(".tsm-a").slideUp()
+    })
+</script>
+
+<script type="text/javascript">
+                //图片上传预览    IE是用了滤镜。
+        function previewImage(file)
+        {
+          var MAXWIDTH  = 122;
+          var MAXHEIGHT = 122;
+          var div = document.getElementById('preview');
+          if (file.files && file.files[0])
+          {
+              div.innerHTML ='<img id=imghead>';
+              var img = document.getElementById('imghead');
+              img.onload = function(){
+                var rect = clacImgZoomParam(MAXWIDTH, MAXHEIGHT, img.offsetWidth, img.offsetHeight);
+                img.width  =  rect.width;
+                img.height =  rect.height;
+//                 img.style.marginLeft = rect.left+'px';
+                img.style.marginTop = rect.top+'px';
+              }
+              var reader = new FileReader();
+              reader.onload = function(evt){img.src = evt.target.result;}
+              reader.readAsDataURL(file.files[0]);
+          }
+          else //兼容IE
+          {
+            var sFilter='filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale,src="';
+            file.select();
+            var src = document.selection.createRange().text;
+            div.innerHTML = '<img id=imghead>';
+            var img = document.getElementById('imghead');
+            img.filters.item('DXImageTransform.Microsoft.AlphaImageLoader').src = src;
+            var rect = clacImgZoomParam(MAXWIDTH, MAXHEIGHT, img.offsetWidth, img.offsetHeight);
+            status =('rect:'+rect.top+','+rect.left+','+rect.width+','+rect.height);
+            div.innerHTML = "<div id=divhead style='width:"+rect.width+"px;height:"+rect.height+"px;margin-top:"+rect.top+"px;"+sFilter+src+"\"'></div>";
+          }
+        }
+        function clacImgZoomParam( maxWidth, maxHeight, width, height ){
+            var param = {top:0, left:0, width:width, height:height};
+            if( width>maxWidth || height>maxHeight )
+            {
+                rateWidth = width / maxWidth;
+                rateHeight = height / maxHeight;
+
+                if( rateWidth > rateHeight )
+                {
+                    param.width =  maxWidth;
+                    param.height = Math.round(height / rateWidth);
+                }else
+                {
+                    param.width = Math.round(width / rateHeight);
+                    param.height = maxHeight;
+                }
+            }
+
+            param.left = Math.round((maxWidth - param.width) / 2);
+            param.top = Math.round((maxHeight - param.height) / 2);
+            return param;
+        }
+</script>
+<script type="text/javascript">
+    function ok() {
+        var sex=$('input[name="sex"]').val();
+        var job=$('input[name="job"]').val();
+        var city=$('input[name="city"]').val();
+        var birthday=$('input[name="birthday"]').val();
+        var own_home=$('input[name="own_home"]').val();
+        var email=$('input[name="email"]').val();
+        var password=$('input[name="my_password"]').val();
+        var repassword=$('input[name="my_repassword"]').val();
+        var weixin=$('input[name="weixin"]').val();
+        var weibo=$('input[name="weibo"]').val();
+        var qq=$('input[name="qq"]').val();
+        
+        $.ajax({
+            type:"post",
+            url:"{:url('index/account/edit_userinfo')}",
+            data:{
+                sex:sex,
+                job:job,
+                city:city,
+                birthday:birthday,
+                own_home:own_home,
+                email:email,
+                my_password:password,
+                my_repassword:repassword,
+                weixin:weixin,
+                weibo:weibo,
+                qq:qq
+            },
+           // data:$('form[name="userinfo"]').serialize(),
+            dataType:'json',
+            async:false,
+            success:function (data) {
+               if(data.status==0){
+                   $("#content").text(data.msg);
+                   $("#myModal").show();
+               }else{
+                   $("#content").text(data.msg);
+                   $("#myModal").show();
+               }
+
+            }
+        })
+
+
+
+    }
+
+    function upload_avators() {
+        var avator=$('input[name="avator"]').val();
+        if ( avator==''){
+            $("#content").text("对不起，请选择你要上传的头像");
+            $("#myModal").show();
+        }
+        var my_avator=document.getElementById("my_avator");
+        var formdate=new FormData();
+        var img=my_avator.files[0];
+        formdate.append('my_avators',img);
+        $.ajax({
+            url:"{url:('upload')}",
+            data:formdate,
+            type:'POST',
+            async:false,
+            dataType:"json",
+            processData:false,
+            contentType:false,
+            success:function (msg) {
+                console.log(msg);
+            }
+        })
+
+
+
+
+
+    }
+
+    function uploads() {
+        var avator_64=$('input[name="avator_info"]').val();
+        if(avator_64==''){
+            $("#content").text("请选择需要上传的头像");
+            $("#myModal").show();
+            return false;
+        }
+        $.ajax({
+            type:"post",
+            url:"{:url('index/account/edit_avator')}",
+            data:{ base64:avator_64 },
+            async:false,
+            success:function (data){
+                $("#content").text(data.msg);
+                $("#myModal").show();
+            }
+        })
+    }
+</script>
+
+<script type="text/javascript">
+                //图片上传预览    IE是用了滤镜。
+        function previewImage(file)
+        {
+          var MAXWIDTH  = 122;
+          var MAXHEIGHT = 122;
+          var div = document.getElementById('preview');
+          if (file.files && file.files[0])
+          {
+              div.innerHTML ='<img id=imghead>';
+              var img = document.getElementById('imghead');
+              img.onload = function(){
+                var rect = clacImgZoomParam(MAXWIDTH, MAXHEIGHT, img.offsetWidth, img.offsetHeight);
+                img.width  =  rect.width;
+                img.height =  rect.height;
+//                 img.style.marginLeft = rect.left+'px';
+                img.style.marginTop = rect.top+'px';
+              }
+              var reader = new FileReader();
+              reader.onload = function(evt){img.src = evt.target.result;}
+              reader.readAsDataURL(file.files[0]);
+          }
+          else //兼容IE
+          {
+            var sFilter='filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale,src="';
+            file.select();
+            var src = document.selection.createRange().text;
+            div.innerHTML = '<img id=imghead>';
+            var img = document.getElementById('imghead');
+            img.filters.item('DXImageTransform.Microsoft.AlphaImageLoader').src = src;
+            var rect = clacImgZoomParam(MAXWIDTH, MAXHEIGHT, img.offsetWidth, img.offsetHeight);
+            status =('rect:'+rect.top+','+rect.left+','+rect.width+','+rect.height);
+            div.innerHTML = "<div id=divhead style='width:"+rect.width+"px;height:"+rect.height+"px;margin-top:"+rect.top+"px;"+sFilter+src+"\"'></div>";
+          }
+        }
+        function clacImgZoomParam( maxWidth, maxHeight, width, height ){
+            var param = {top:0, left:0, width:width, height:height};
+            if( width>maxWidth || height>maxHeight )
+            {
+                rateWidth = width / maxWidth;
+                rateHeight = height / maxHeight;
+
+                if( rateWidth > rateHeight )
+                {
+                    param.width =  maxWidth;
+                    param.height = Math.round(height / rateWidth);
+                }else
+                {
+                    param.width = Math.round(width / rateHeight);
+                    param.height = maxHeight;
+                }
+            }
+
+            param.left = Math.round((maxWidth - param.width) / 2);
+            param.top = Math.round((maxHeight - param.height) / 2);
+            return param;
+        }
+</script>
+<!--上传头像代码-->
+
+<script>
+    var input = document.getElementById("imgfile");
+    //检测浏览器是否支持FileReader
+    if (typeof (FileReader) === 'undefined') {
+        result.innerHTML = "抱歉，你的浏览器不支持 FileReader，请使用现代浏览器操作！";
+        input.setAttribute('disabled', 'disabled');
+    } else {
+        //开启监听
+        input.addEventListener('change', readFile, false);
+    }
+    function readFile() {
+        var file = this.files[0];
+            if(file.size>61440){
+                $("#content").text("头像大于60kb，请重新选择");
+                $("#myModal").show();
+                return false;
+            }
+        //限定上传文件的类型，判断是否是图片类型
+        if (!/image\/\w+/.test(file.type)) {
+            alert("只能选择图片");
+            return false;
+        }
+        var reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = function (e) {
+            base64Code=this.result;
+            //把得到的base64赋值到img标签显示
+            $('input[name="avator_info"]').val(base64Code);
+            $("#showImg").attr("src",base64Code);
+        }
+    }
+</script>
+<script type="text/javascript">
+    layui.use(['layer', 'upload'], function(){
+        var layer = layui.layer,
+            upload = layui.upload;
+        //执行实例
+        uploadInst = upload.render({
+            elem: '#test1' //绑定元素
+            ,url: "{:url('title_img')}" //上传接口
+            ,before: function(obj){
+                //预读本地文件示例，不支持ie8
+                obj.preview(function(index, file, result){
+                    $("#imghead").attr('src',result)
+                });
+            }
+            ,done: function(res){
+                if (res.code==0){
+                    // console.log(res);
+                    $("input[name='images']").val(res.src);
+                    // layer.msg(res.message,{icon:6})
+                }
+            }
+        });
+        $("#button").click(function () {
+            var img = $("input[name='images']").val();
+            $.post("{:url('editTitleImg')}",{img:img},function (res) {
+                console.log(res);
+                if (res.code==1){
+                    layer.msg(res.msg,{icon:6},function () {
+                        window.location.reload();
+                    })
+                } else {
+                    layer.msg(res.msg,{icon:5})
+                }
+            },'json')
+        })
+    });
+
+</script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+    <title>产品展示</title>
+    <link href="__STATIC__/mobile/fonts/iconfont.css" rel="stylesheet"/>
+    <link href="__STATIC__/mobile/css/bass.css" rel="stylesheet"/>
+    <link href="__STATIC__/mobile/css/index.css" rel="stylesheet"/>
+</head>
+<body>
+<div>
+    <header>
+        <div class="header">
+            <h1>产品详情</h1>
+            <a href="{:url('mobile/index/index')}" class="return"><i class="icon-16"></i></a>
+        </div>
+    </header>
+    <div style="height: 2.5rem;"></div>
+</div>
+<!--产品展示部分-->
+<div class="itemdetails-list">
+    <!--图片轮播-->
+    <div class="m-slider itemdetails-slider" id="slider">
+        <div class="ks_dbox ks_ts">
+            <div class="ks_wrap">
+                <img src="__STATIC__/mobile/images//gy2.jpg">
+            </div>
+            <div class="ks_wrap">
+                <img src="__STATIC__/mobile/images//gy3.jpg">
+            </div>
+            <div class="ks_wrap">
+                <img src="__STATIC__/mobile/images//gy4.jpg">
+            </div>
+        </div>
+        <div class="ks-circles"><ul class="ks_wt"></ul></div>
+    </div>
+    <!--产品标题-->
+    <div class="itemdetails-title">
+        <h1>小西北 特级开心果 手剥大颗粒 自然开口 袋装500g/散装批发代销</h1>
+    </div>
+    <!--产品标题end-->
+    <!--产品详情-->
+    <div class="itemdetails-details">
+        <p>商品名称 <span>开心果</span></p>
+        <p>品&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;牌<span>小西北</span></p>
+        <p>口&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;味<span>原色/白果</span></p>
+        <p>规&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;格<span>500g/袋</span></p>
+        <p>生产日期<span>2016年1月</span></p>
+        <p>保质期限<span>一年（请置于阴凉干燥处</span></p>
+        <p>许&nbsp;&nbsp;可&nbsp;&nbsp;证<span>QS6528 1702 0186 </span></p>
+    </div>
+    <!--产品详情end-->
+    <!--产品展示部分end-->
+    <!-- 引用的js文件 -->
+    <script type="text/javascript" src="__STATIC__/mobile/js/zepto.min.js"></script>
+    <script type="text/javascript" src="__STATIC__/mobile/js/zepto.kslider.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            //slider
+            $('#slider').slider({
+                className: 'slider_box',
+                tick: 4000 //播放间隔
+            });
+            var imgPieces=$('.m-slider').find('.ks_wrap');
+            for(var i=0;i<imgPieces.length;i++){
+                $('.ks_wt').append('<li></li>');
+                $('.ks_wt').find('li').eq(0).addClass('active');
+            }
+        });
+    </script>
+</body>
+</html>

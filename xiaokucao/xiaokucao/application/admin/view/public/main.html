@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="webkit">
+
+    <title>{$Think.session.pubinfo.site_name}</title>
+
+    <!--[if lt IE 8]>
+    <script>
+        alert('已不支持IE6-8，请使用谷歌、火狐等浏览器\n或360、QQ等国产浏览器的极速模式浏览本页面！');
+    </script>
+    <![endif]-->
+
+    <link href="__STATIC__/admin/css/bootstrap.min.css" rel="stylesheet">
+    <link href="__STATIC__/admin/css/font-awesome.min.css" rel="stylesheet">
+    <link href="__STATIC__/admin/css/animate.css" rel="stylesheet">
+    <link href="__STATIC__/admin/css/style.css" rel="stylesheet">
+
+    <!-- 全局js -->
+    <script src="__STATIC__/admin/js/jquery-2.1.1.min.js"></script>
+    <script src="__STATIC__/admin/js/bootstrap.min.js"></script>
+    <script src="__STATIC__/admin/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="__STATIC__/admin/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="__STATIC__/admin/js/plugins/layer/layer.min.js"></script>
+
+    <!-- 自定义js -->
+    <script src="__STATIC__/admin/js/hplus.js"></script>
+    <script type="text/javascript" src="__STATIC__/admin/js/contabs.js"></script>
+
+    <!-- 第三方插件 -->
+    <!--<script src="__STATIC__/admin/js/plugins/pace/pace.min.js"></script>-->
+    <script language="JavaScript">
+        if (window != top)
+            top.location.href = location.href;
+    </script>
+</head>
+
+<body class="fixed-sidebar full-height-layout gray-bg" scroll="no" >
+<div id="wrapper"style="overflow-y:hidden">
+    <!--左侧导航开始-->
+    <nav class="navbar-default navbar-static-side" role="navigation">
+        <div class="sidebar-collapse">
+            <ul class="nav" id="side-menu">
+                <li class="nav-header">
+                    <div class="dropdown profile-element">
+                        <!--<span>-->
+                        <!--<img alt="image" class="img-circle" src="__STATIC__/admin/img/user-4.png"/>-->
+                        <!--</span>-->
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="javascript:">
+                                <span class="clear">
+                                    <span class="block m-t-xs"> <strong
+                                            class="font-bold">{:session('sign_admin')['adminname']}</strong></span>
+                                    <span class="text-muted text-xs block"> <b class="caret"></b></span>
+                                </span>
+                        </a>
+                        <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                            <!-- <li>
+                                <a class="J_menuItem" href="__MODULE__/Member/memberInfo/id/{:session('uid')}">个人资料</a>
+                            </li>
+                            <li class="divider"></li> -->
+                            <li><a class="J_menuItem"
+                                   href="{:url('user/user_upwd',array('id'=>session('sign_admin')['aid']))}">修改密码</a></li>
+                            <li>
+                                <a href="{:url('login/logout')}">安全退出</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="logo-element">B</div>
+                </li>
+
+
+
+                <foreach name="nav_data" item="v">
+                    <empty name="v['_data']">
+                        <li >
+                            <a href="{:url($v['name'])}">
+                                <i class="fa fa-user "></i>
+                                <span class="nav-label">{$v['title']}</span>
+                                <span class="fa arrow"></span>
+                            </a>
+                        </li>
+                        <else/>
+                        <li>
+                            <a href="javascript:">
+                                <i class="fa fa-user"></i>
+                                <span class="nav-label">{$v['title']}</span>
+                                <span class="fa arrow"></span>
+                            </a>
+                            <foreach name="v['_data']" item="n">
+                                <ul class="nav nav-second-level">
+                                    <li><a class="J_menuItem" href="{:url($n['name'])}">{$n['title']}</a></li>
+                                </ul>
+                            </foreach>
+                        </li>
+                    </empty>
+                </foreach>
+                <li>
+                    <a href="{:url('login/logout')}"><i class="fa fa-lock"></i> <span
+                            class="nav-label">安全退出</span></a>
+                </li>
+
+            </ul>
+        </div>
+    </nav>
+    <!--左侧导航结束-->
+
+    <!--右侧部分开始-->
+    <div id="page-wrapper" class="gray-bg dashbard-1">
+        <div class="row border-bottom">
+            <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
+                <div class="navbar-header"><a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i
+                        class="fa fa-bars"></i> </a>
+
+                </div>
+                <ul class="nav navbar-top-links navbar-right">
+                    <li><span class="m-r-sm text-muted welcome-message"><a href="javascript:" title="返回首页"><i
+                            class="fa fa-home"></i></a>欢迎登陆到系统后台</span>
+                    </li>
+                    <li>
+                        <a href="{:url('login/logout')}"> <i class="fa fa-sign-out"></i> 退出 </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div class="row content-tabs">
+            <button class="roll-nav roll-left J_tabLeft"><i class="fa fa-angle-double-left"></i></button>
+            <nav class="page-tabs J_menuTabs">
+                <div class="page-tabs-content">
+                    <a href="{:url('Index/index')}" target="iframe0" class="active J_menuTab"
+                       data-id="{:url('Index/index')}">首页</a>
+                </div>
+            </nav>
+            <button class="roll-nav roll-right J_tabRight"><i class="fa fa-angle-double-right"></i></button>
+        </div>
+
+
+        <iframe class="J_iframe" name="iframe0" id="iframe0" width="100%" height="100%"
+                src="{:url('Index/wellcome')}" frameborder="0" data-id="{$Think.session.iframeurl}"
+                seamless></iframe>
+    </div>
+    <div class="row J_mainContent" id="content-main">
+
+        <div class="footer">
+            <div class="pull-right">{$Think.session.pubinfo.copyright}</div>
+        </div>
+    </div>
+    <!--右侧部分结束-->
+
+</div>
+
+</body>
+
+</html>

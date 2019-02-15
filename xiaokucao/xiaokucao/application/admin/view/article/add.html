@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {include file="public:head"/}
+    <link href="__STATIC__/admin/css/plugins/treeview/bootstrap-treeview.css" rel="stylesheet">
+    <script src="__STATIC__/admin/js/plugins/treeview/bootstrap-treeview.js"></script>
+    <script src="__STATIC__/admin/js/demo/treeview-demo.js"></script>
+</head>
+<body>
+<div class="wrapper wrapper-content animated fadeInRightBig">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="ibox">
+                <div class="ibox-title">
+                    <h5>文章管理列表</h5>
+                    <div class="ibox-tools" style="float:left;margin:0 20px">
+                        <input type="button" value="添加文章" style="margin:0 10px ;width: 60px;" onclick="go_next()" class="btn btn-primary btn-xs">
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <form class="form-horizontal" action="" id="fo" method="post" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label>标题</label>
+                            <input type="text" class="form-control" id="title" name="title" required="required"  value="">
+                        </div>
+                        <div class="form-group">
+                            <label>分类</label>
+                            <select name="cate_id">
+                                {volist name="cates" id="v"  key="k"}
+                                <option value ="{$v.cate_id}" >{$v.cate_name}</option>
+
+                                {/volist}
+                            </select>
+
+                        </div>
+                        <div class="form-group">
+                            <label>作者</label>
+                            <input type="text" class="form-control" id="author" name="author" required="required"  value="">
+                        </div>
+
+                        <div class="form-group">
+                            <label>封面</label>
+                            <input type="file" class="form-control" id="img" required="required" name="thumb">
+
+                        </div>
+
+                        <div class="form-group">
+                            <label>内容</label>
+                            <script id="content" name="content" type="text/plain">请在这里输入文章内容 </script>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="submit"  value="保存" class="btn btn-primary">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    function go_next() {
+        window.location.href="{:url('admin/article/add')}"
+    }
+</script>
+<!-- 配置文件 -->
+<script type="text/javascript" src="__STATIC__/ueditor1.4/ueditor.config.js"></script>
+<!-- 编辑器源码文件 -->
+<script type="text/javascript" src="__STATIC__/ueditor1.4/ueditor.all.js"></script>
+<!-- 实例化编辑器 -->
+<script type="text/javascript">
+    var ue = UE.getEditor('content');
+</script>
+<script type="text/javascript">
+    $("#addInput").click(function(){
+
+        $(".demoinput:last").after($(".demoinput:first").clone());
+        $(".demoinput:last").find('input').val('');
+    });
+    $("#delInput").click(function(){
+        if($(".demoinput").length > 1){
+            $(".demoinput:last").remove();
+        }
+    });
+</script>
+{include file="public:footer"/}
+</body>
+</html>

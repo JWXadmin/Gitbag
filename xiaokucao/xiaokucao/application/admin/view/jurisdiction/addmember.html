@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {include file="public:head"/}
+    <link href="__STATIC__/admin/css/plugins/treeview/bootstrap-treeview.css" rel="stylesheet">
+    <script src="__STATIC__/admin/js/plugins/treeview/bootstrap-treeview.js"></script>
+    <script src="__STATIC__/admin/js/demo/treeview-demo.js"></script>
+</head>
+<style>
+    table tr td{
+        border-bottom: 1px solid #ecf0f1;
+        border-right: 1px solid #ecf0f1;
+    }
+</style>
+<body class="gray-bg">
+<div class="wrapper wrapper-content animated fadeInRightBig">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="ibox">
+                <div class="ibox-content">
+                    <form class="form-horizontal" action="{:url('Jurisdiction/doAddMember')}" id="fo"
+                          method="post">
+                        <div class="form-group">
+                            <label>管理员姓名</label> <input type="text" class="form-control" name="nikename"
+                                                      placeholder="管理员姓名" >
+                        </div>
+                        <div class="form-group">
+                            <label>用户名</label> <input type="text" class="form-control" name="uname"
+                                                      placeholder="输入用户名" >
+                        </div>
+                        <div class="form-group">
+                            <label>密码</label> <input type="password" class="form-control" name="pwd"
+                                                      placeholder="输入密码" >
+                        </div>
+                        <div class="form-group">
+                            <label>确认密码</label> <input type="password" class="form-control" name="pwd_sure"
+                                                      placeholder="输入确认密码" >
+                        </div>
+                        <div class="form-group">
+                            {foreach name="group" item="v"}
+                                <label style="width: 100px">
+                                    <input name="group_id" type="radio" value="{$v.id}">{$v.title}
+                                </label>
+                            {/foreach}
+
+                        </div>
+                        <!--<div class="hr-line-dashed"></div>-->
+                        <div class="form-group">
+                            <button class="btn btn-primary" type="submit" id="serchf">保存</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{include file="public:footer"/}
+</body>
+
+
+<script type="text/javascript">
+
+    $('#serchf').click(function () {
+        if ($("input[name='uname']").val() == "") {
+            alert('用户名不能为空');
+            return false;
+        }
+        if ($("input[name='nikename']").val() == "") {
+            alert('管理员姓名不能为空');
+            return false;
+        }
+        if ($("input[name='pwd']").val() == "") {
+            alert('密码不能为空');
+            return false;
+        }
+        if ($("input[name='pwd_sure']").val() == "") {
+            alert('请输入确认密码');
+            return false;
+        }
+        $('#fo').submit();
+
+    });
+
+
+
+</script>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {include file="public:head"/}
+    <link href="__STATIC__/admin/css/plugins/treeview/bootstrap-treeview.css" rel="stylesheet">
+    <script src="__STATIC__/admin/js/plugins/treeview/bootstrap-treeview.js"></script>
+    <script src="__STATIC__/admin/js/demo/treeview-demo.js"></script>
+</head>
+<body>
+<div class="wrapper wrapper-content animated fadeInRightBig">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="ibox">
+                <div class="ibox-title">
+                    <h5>分类管理列表</h5>
+                    <div class="ibox-tools" style="float:left;margin:0 20px">
+                        <input type="button" value="添加分类" style="margin:0 10px ;width: 60px;"
+                               id="adduser" onclick="go_next()" class="btn btn-primary btn-xs">
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <table class="table table-striped table-hover no-margin">
+                        <thead>
+                        <tr>
+                            <th width="3%" class="text-center">ID</th>
+                            <th width="15%" class="text-center">分类名</th>
+                            <th width="10%" class="text-center">添加时间</th>
+                            <th width="17%" class="text-center">操作</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {empty name="cates"}
+                        <tr>
+                            <td colspan="8" class="text-center">暂无数据</td>
+                        </tr>
+                        {else/}
+                        {volist name="cates" id="v" key="k"}
+                        <tr>
+                            <td class="text-center">{$v.cate_id}</td>
+                            <td class="text-center">{$v.cate_name}</td>
+                            <td class="text-center">{$v.date|date="Y-m-d",###}</td>
+
+
+                            <td class="text-center">
+
+                                <a href="" class="label label-primary set">编辑</a>
+
+                            </td>
+
+                        </tr>
+                        {/volist}
+                        {/empty}
+                        </tbody>
+                    </table>
+                </div>
+                <div class="container-fluid text-center">
+                    {$cates->render()}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    function go_next() {
+        window.location.href="{:url('addcate')}"
+    }
+</script>
+{include file="public:footer"/}
+</body>
+</html>

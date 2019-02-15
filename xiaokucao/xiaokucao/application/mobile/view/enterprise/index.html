@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+    <title>企业列表</title>
+    <link href="__STATIC__/mobile/fonts/iconfont.css" rel="stylesheet"/>
+    <link href="__STATIC__/mobile/css/bass.css" rel="stylesheet"/>
+    <link href="__STATIC__/mobile/css/index.css" rel="stylesheet"/>
+
+</head>
+<body>
+{include file="public/nav" /}
+<!-- 企业公司列表 firmList -->
+<div class="firmList">
+    <!-- 头部选择项 -->
+    <div class="firmL-nav">
+        <ul class="firmL-nav-U">
+            <li>
+                <span>地区<i class="icon-23"></i></span>
+                <div class="firmLBox">
+                    <div class="firmLText">
+                        <p >全部地区</p>
+                        <label><input type="radio" value="" name="region" /><span>河北省</span></label>
+                        <label><input type="radio" value="" name="region" /><span>山西省</span></label>
+                        <label><input type="radio" value="" name="region" /><span>辽宁省</span></label>
+                        <label><input type="radio" value="" name="region" /><span>吉林省</span></label>
+                        <label><input type="radio" value="" name="region" /><span>黑龙江</span></label> <br>
+                        <label><input type="radio" value="" name="region" /><span>江苏省</span></label>
+                        <label><input type="radio" value="" name="region" /><span>浙江省</span></label>
+                        <label><input type="radio" value="" name="region" /><span>安徽省</span></label>
+                        <label><input type="radio" value="" name="region" /><span>福建省</span></label>
+                        <label><input type="radio" value="" name="region" /><span>江西省</span></label> <br>
+                        <label><input type="radio" value="" name="region" /><span>山东省</span></label>
+                        <label><input type="radio" value="" name="region" /><span>河南省</span></label>
+                        <label><input type="radio" value="" name="region" /><span>湖北省</span></label>
+                        <label><input type="radio" value="" name="region" /><span>湖南省</span></label>
+                        <label><input type="radio" value="" name="region" /><span>广东省</span></label> <br>
+                        <label><input type="radio" value="" name="region" /><span>海南省</span></label>
+                        <label><input type="radio" value="" name="region" /><span>四川省</span></label>
+                        <label><input type="radio" value="" name="region" /><span>贵州省</span></label>
+                        <label><input type="radio" value="" name="region" /><span>云南省</span></label>
+                        <label><input type="radio" value="" name="region" /><span>陕西省</span></label> <br>
+                        <label><input type="radio" value="" name="region" /><span>甘肃省</span></label>
+                        <label><input type="radio" value="" name="region" /><span>青海省</span></label>
+                        <label><input type="radio" value="" name="region" /><span>内蒙古</span></label>
+                        <label><input type="radio" value="" name="region" /><span>广西省</span></label>
+                        <label><input type="radio" value="" name="region" /><span>西藏区</span></label> <br>
+                        <label><input type="radio" value="" name="region" /><span>宁夏省</span></label>
+                        <label><input type="radio" value="" name="region" /><span>新疆区</span></label>
+                        <label><input type="radio" value="" name="region" /><span>香港区</span></label>
+                        <label><input type="radio" value="" name="region" /><span>澳门区</span></label>
+                    </div>
+                </div>
+                <div class="bar"></div>
+            </li>
+            <li>
+                <span>行业<i class="icon-23"></i></span>
+                <div class="firmLBox">
+                    <div class="firmLText">
+                        <p>全部</p>
+                        <label><input type="radio" value="" name="count" /><span>保险业</span></label>
+                        <label><input type="radio" value="" name="count" /><span>畜牧业</span></label>
+                        <label><input type="radio" value="" name="count" /><span>软件业</span></label>
+                        <label><input type="radio" value="" name="count" /><span>制造业</span></label>
+                        <label><input type="radio" value="" name="count" /><span>餐饮业</span></label> <br>
+                        <label><input type="radio" value="" name="count" /><span>房地产</span></label>
+                        <label><input type="radio" value="" name="count" /><span>建筑业</span></label>
+                        <label><input type="radio" value="" name="count" /><span>邮政业</span></label>
+                        <label><input type="radio" value="" name="count" /><span>广告业</span></label>
+                        <label><input type="radio" value="" name="count" /><span>旅游业</span></label> <br>
+                    </div>
+                </div>
+                <div class="bar"></div>
+            </li>
+            <li>
+                <span>隶属<i class="icon-23"></i></span>
+                <div class="firmLBox">
+                    <div class="firmLText">
+                        <p>全部</p>
+                        <label><input type="radio" value="" name="belong" /><span>中国协会</span></label>
+                        <label><input type="radio" value="" name="belong" /><span>佛山协会</span></label>
+                        <label><input type="radio" value="" name="belong" /><span>中山协会</span></label>
+                    </div>
+                </div>
+                <div class="bar"></div>
+            </li>
+
+            <div class="input-search-association">
+                <input type="search" placeholder="企业关键字" >
+                <i class="icon-icon-1460187631756 icon-search-association"></i>
+            </div>
+        </ul>
+    </div>
+    <!-- 头部选择项 end-->
+    <ul class="firmL-U">
+        <li>
+            <a href="{:url('mobile/enterprise/enterprise_detail')}">
+                <img src="__STATIC__/mobile/images/user-img0.png">
+                <div class="firm-text">
+                    <h1>郭小帅采销集团</h1>
+                    <p>隶属：90后创业社</p>
+                    <div class="firm-span">
+                        <span>行业：服务业</span>
+                        <span>规模：1000人</span><br/>
+                        <span>联系人：郭小帅<i class="icon-vip3"></i></span>
+                    </div>
+                </div>
+                <i class="icon-uniE926"></i>
+            </a>
+        </li>
+        <li>
+            <a href="javascript:;">
+                <img src="__STATIC__/mobile/images/zhny3.png">
+                <div class="firm-text">
+                    <h1>伊利集团</h1>
+                    <p>隶属：90后创业社</p>
+                    <div class="firm-span">
+                        <span>行业：服务业</span>
+                        <span>规模：1000人以上</span><br/>
+                        <span>联系人：潘刚<i class="icon-vip6"></i></span>
+                    </div>
+                </div>
+                <i class="icon-uniE926"></i>
+            </a>
+        </li>
+        <li>
+            <a href="javascript:;">
+                <img src="__STATIC__/mobile/images/zhny4.png">
+                <div class="firm-text">
+                    <h1>哇哈哈集团</h1>
+                    <p>隶属：90后创业社</p>
+                    <div class="firm-span">
+                        <span>行业：饮料生产企业</span>
+                        <span>规模：30000人</span><br/>
+                        <span>联系人：宗庆后<i class="icon-vip4"></i></span>
+                    </div>
+                </div>
+                <i class="icon-uniE926"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+</body>
+<!-- 引入js资源 -->
+<script type="text/javascript" src="__STATIC__/mobile/js/zepto.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('.firmL-nav-U li span').click(function(){
+            $(this).parent().toggleClass('active').siblings().removeClass('active');
+        });
+    });
+</script>
+</html>

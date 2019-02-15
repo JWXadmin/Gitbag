@@ -1,0 +1,38 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="charset" content="utf8"/>
+    <link rel="Stylesheet" type="text/css" src="__STATIC__/games/css/common.css"></link>
+    <script type="text/javascript" src="__STATIC__/games/js/PxLoader.js"></script>
+    <script type="text/javascript" src="__STATIC__/games/js/PxLoaderImage.js"></script>
+    <script type="text/javascript" src="__STATIC__/games/img/11001//map_mask.js"></script>
+    <script type="text/javascript" src="__STATIC__/games/js/graph.js"></script>
+    <script type="text/javascript" src="__STATIC__/games/js/astar.js"></script>
+    <script type="text/javascript" src="__STATIC__/games/js/util.js"></script>
+    <script type="text/javascript" src="__STATIC__/games/js/map_controller.js"></script>
+    <script type="text/javascript" src="__STATIC__/games/js/player.js"></script>
+    <script type="text/javascript" src="__STATIC__/games/js/player_mgr.js"></script>
+    <script type="text/javascript" src="__STATIC__/games/js/effect.js"></script>
+    <script type="text/javascript" src="__STATIC__/games/js/main.js"></script>
+    <title>小游戏</title>
+</head>
+<body onload="start()">
+<div class="login_container" style="background-color:white; align:center; width: 1200;position: absolute;left:20px">
+    服务器ip<input id="server" type="text" value="127.0.0.1">
+    用户名<input id="username" type="text">
+    <input type="button" value="登录">
+</div>
+<div class="gameContainer">
+    <div class="mapContainer" id="map">
+        <canvas id="game_map" width="1200" height="600"></canvas>
+    </div>
+    <div class="playerContainer">
+        <canvas id="player" width="1200" height="600"></canvas>
+    </div>
+    <div class="debug">
+        <canvas id="debug_canvas" width="1200" height="600"></canvas>
+    </div>
+</div>
+<footer></footer>
+</body>
+</html>

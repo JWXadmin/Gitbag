@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <include file="public:head"/>
+    <link href="__STATIC__/admin/css/plugins/treeview/bootstrap-treeview.css" rel="stylesheet">
+    <script src="__STATIC__/admin/js/plugins/treeview/bootstrap-treeview.js"></script>
+    <script src="__STATIC__/admin/js/demo/treeview-demo.js"></script>
+</head>
+<style>
+    table tr td{
+        border-bottom: 1px solid #ecf0f1;
+        border-right: 1px solid #ecf0f1;
+    }
+</style>
+<body class="gray-bg">
+<div class="wrapper wrapper-content animated fadeInRightBig">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="ibox">
+                <div class="ibox-content">
+                    <form class="form-horizontal" action="{:url('cate/doedit')}" id="fo"
+                          method="post" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label>名称</label> <input type="text" class="form-control" name="name"
+                                         value="{$list.name}"            placeholder="请输入分类名称" >
+                            <input type="hidden" class="form-control" name="id" value="{$list.id}">
+                        </div>
+                        <div class="form-group">
+                            <label>排序</label> <input type="text" class="form-control" name="order"
+                                                     value="{$list.order}"            placeholder="输入展示顺序" >
+                        </div>
+                        <div class="form-group">
+                        <if condition="$list.ischarge eq 1">
+                            <label>是否收费</label>
+                            <input type="radio"  name="ischarge" value="1" placeholder="收费" checked="checked">收费
+                            <input type="radio"  name="ischarge" value="0" placeholder="免费" >免费
+                            <else/>
+                            <label>是否收费</label>
+                            <input type="radio"  name="ischarge" value="1" placeholder="收费" >收费
+                            <input type="radio"  name="ischarge" value="0" placeholder="免费" checked="checked">免费
+                        </if>
+                        </div>
+                        <div class="form-group">
+                            <label>价格</label> <input type="text" class="form-control" name="money"
+                                                     value="{$list.money}"                   placeholder="请输入价格" >
+                        </div>
+                        <!--<div class="form-group">
+                            <label>图标</label> <input type="file" class="form-control" name="image">
+                        </div>-->
+                        <!--<div class="hr-line-dashed"></div>-->
+                        <div class="form-group">
+                            <button class="btn btn-primary" type="submit" id="serchf">保存</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<include file="public:footer"/>
+</body>
+
+
+<script type="text/javascript">
+
+    $('#serchf').click(function () {
+        if ($("input[name='name']").val() == "") {
+            alert('分类名不能为空');
+            return false;
+        }
+        if ($("input[name='order']").val() == "") {
+            alert('请设置排序');
+            return false;
+        }
+        if ($("input[name='money']").val() == "") {
+            alert('请设置价格');
+            return false;
+        }
+        /*if ($("input[name='image']").val() == "") {
+            alert('请设置封面图标');
+            return false;
+        }*/
+        $('#fo').submit();
+
+    });
+
+
+
+</script>
+</html>

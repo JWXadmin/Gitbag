@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {include file="public:head"/}
+    <link href="__STATIC__/admin/css/plugins/treeview/bootstrap-treeview.css" rel="stylesheet">
+    <script src="__STATIC__/admin/js/plugins/treeview/bootstrap-treeview.js"></script>
+    <script src="__STATIC__/admin/js/demo/treeview-demo.js"></script>
+</head>
+<style>
+    table tr td{
+        border-bottom: 1px solid #ecf0f1;
+        border-right: 1px solid #ecf0f1;
+    }
+</style>
+<body class="gray-bg">
+<div class="wrapper wrapper-content animated fadeInRightBig">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="ibox">
+                <div class="ibox-content">
+                    <form class="form-horizontal" action="{:url('Jurisdiction/change',array('id'=>$id))}" id="fo"
+                          method="post">
+                        <div class="form-group">
+                            <label>角色名</label> <input type="text" class="form-control" name="title"
+                                                      placeholder="输入角色名" value="{$info.title}">
+
+                        </div>
+                        <div class="form-group">
+                            <table style="border-left: 1px solid #ecf0f1;border-top: 1px solid #ecf0f1;width: 100%">
+                                {$tree}
+                            </table>
+
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-primary" type="submit" id="serchf">保存</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{include file="public:footer"/}
+</body>
+
+
+<script type="text/javascript">
+
+    $('#serchf').click(function () {
+        if ($("input[name='name']").val() == "") {
+            alert('类别名不能为空');
+            return false;
+        } else {
+            $('#fo').submit();
+        }
+
+    });
+
+
+
+</script>
+</html>

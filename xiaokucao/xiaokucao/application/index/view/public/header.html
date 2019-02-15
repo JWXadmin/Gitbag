@@ -1,0 +1,85 @@
+<link rel="stylesheet" href="__STATIC__/bootstrap/bootstrap.min.css">
+<link rel="stylesheet" href="__STATIC__/layui/css/layui.css">
+<script src="__STATIC__/js/jquery-2.2.3.min.js"></script>
+<script src="__STATIC__/bootstrap/jauery.min.js"></script>
+<script src="__STATIC__/bootstrap/bootstrap.min.js"></script>
+<script src="__STATIC__/layui/layui.js"></script>
+
+<div class="header">
+    <div class="head wrap">
+        <div class="logo fl"><a href="{:url('index/index/index')}" style="font-size: 42px;color: dodgerblue">
+            <img src="__STATIC__/new/images/logo.png" style="width: 64px;height: 64px">小枯草
+        </a></div>
+        <div class="head-right fr">
+
+            {if condition="$username eq 'no_username'" }
+            <div class="head-a fr" id="no_cookie" >
+                <div class="head-a1 fl" ><a href=";" onclick="toLogin()" target="_blank"><img src="__STATIC__/new/images/tb-a.png"></a></div>
+                <div class="head-a1 fl"><a href=""><img src="__STATIC__/new/images/tb-b.png"></a></div>
+                <div class="head-a3 login-click fl" >登录</div>
+                <div class="head-a4 reg-click fl" >注册</div>
+            </div>
+            {else/}
+            <div class="head-a fr" >
+               <!-- <span style="color: blue;font-size: 19px">欢迎<i>{$username}</i>   </span>-->
+                <a href="{:url('index/account/index')}" style="color: deepskyblue;font-size: 19px;padding-right: 20px" >个人中心 </a>
+                <a href="javascript:void (0)" style="color: white;font-size: 19px" onclick="login_out()">退出登录</a>
+
+            </div>
+            {/if}
+            <div class="clearfix"></div>
+            <div class="nav fr">
+                <ul>
+                    <li
+                    {if condition="$action eq '首页'"}
+                    class="nav-cut"
+                        {/if}
+                    ><a href="{:url('index/index/index')}">首页</a>
+                    </li>
+
+
+                    <li
+                            {if condition="$action eq '文章'"}
+                            class="nav-cut"
+                            {/if}
+                    ><a href="{:url('index/article/index')}"
+
+                    >文章</a>
+
+                    </li>
+
+                    <li
+                            {if condition="$action eq '视频'"}
+                            class="nav-cut"
+                            {/if}
+                    ><a href="{:url('index/community/index')}">视频</a>
+                    </li>
+
+                    <li
+                            {if condition="$action eq '论坛'"}
+                            class="nav-cut"
+                            {/if}
+                    ><a href="{:url('index/course/index')}">论坛</a>
+                    </li>
+
+
+                    <li
+                            {if condition="$action eq '活动'"}
+                            class="nav-cut"
+                            {/if}
+                    ><a href="{:url('index/active/index')}">活动</a>
+                    </li>
+
+                    <li
+                            {if condition="$action eq '联系我'"}
+                            class="nav-cut"
+                            {/if}
+                    ><a href="{:url('index/contact/index')}">联系我</a>
+                    </li>
+
+                </ul>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>

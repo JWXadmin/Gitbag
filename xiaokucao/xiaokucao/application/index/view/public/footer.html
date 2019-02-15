@@ -1,0 +1,226 @@
+<div class="footer" style="z-index: 999">
+    <div class="wrap">
+        <div class="foot">
+            <div class="foot-left fl">
+
+                <a href="{:url('index/contact/index')}">联系我</a>
+                <a href="{:url('index/contact/index')}">联系我</a>
+                <a href="{:url('index/contact/index')}">联系我</a>
+                <a href="{:url('index/contact/index')}">联系我</a>
+
+            </div>
+            <div class="foot-c fl"><a href="{:url('index/index/index')}"><img src="__STATIC__/new/images/logo.png" style="width: 64px ;height: 64px"></a></div>
+            <div class="foot-right fr">
+                <a href="{:url('index/contact/index')}">联系我</a>
+                <a href="{:url('index/contact/index')}">联系我</a>
+                <a href="{:url('index/contact/index')}">联系我</a>
+                <a href="{:url('index/contact/index')}">联系我</a>
+            </div>
+        </div>
+        <div class="foot">
+        <div class=" foot-btm foot"><a href="http://www.miitbeian.gov.cn" target="_blank">渝ICP备18013625号</a></div>
+        </div>
+    </div>
+</div>
+
+<div class="mask"></div>
+<!--login-->
+<div class="login">
+    <div class="login-title">
+        <div class="login-a">登录</div>
+        <div class="login-b"></div>
+        <div class="login-c close">x</div>
+    </div>
+    <div class="login-btm" style="height: auto">
+        <form name="login">
+        <div class="login-d"><input name="username"  type="text" class="login-text" placeholder="用户名"></div>
+        <div class="login-d"><input name="password" type="password" class="login-pas" placeholder="密码"></div>
+        </form>
+        <div class="login-d" style="display: none;color: red" id="no_username">用户名或者密码不能为空！</div>
+
+        <div class="login-d"><input onclick="logins()" type="button" class="login-btn" placeholder="登录" value="登录"></div>
+        <div class="login-f">
+            <a href="">忘记密码</a>
+            <span>还没有焦点账号?><a href="javascript:void (0);" class="reg-href">点击注册</a></span>
+        </div>
+    </div>
+</div>
+<!--register-->
+<div class="reg">
+    <div class="login-title">
+        <div class="login-a">注册</div>
+        <div class="login-b"></div>
+        <div class="login-c close">x</div>
+    </div>
+    <div class="login-btm">
+        <form name="register">
+        <div class="login-d"><input name="usernames" type="text" class="login-text" placeholder="用户名"></div>
+        <div class="login-d"><input name="passwords" type="password" class="login-pas" placeholder="密码"></div>
+        </form>
+        <div class="login-d" style="display: none;color: red" id="wrong_msg">用户名或者密码不能为空！</div>
+        <div class="login-d"><input type="button" class="login-btn" placeholder="注册" value="注册" onclick="registers()"></div>
+        <div class="login-f">
+            <a href="">忘记密码</a>
+        </div>
+    </div>
+
+</div>
+<!---->
+
+<!-- 模态框（Modal） -->
+<div class="modal " id="myModal" tabindex="-1" role="dialog"   style="display:none">
+    <div class="modal-dialog">
+        <div class="modal-content" style="display: block">
+            <div class="modal-header">
+
+                <h4 class="modal-title" id="myModalLabel">
+                    温馨提示：
+                </h4>
+            </div>
+            <div class="modal-body" id="content">
+                提示内容！
+            </div>
+            <div class="modal-footer">
+                <div type="button" class="btn"   id="colse_alert" onclick="close_it()" >关闭 </div>
+
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<!---->
+
+<script type="text/javascript">
+    function search_1() {
+        var search=$("#search").val();
+        if(!search){
+            $("#content").text("请输入搜索关键字");
+            $("#myModal").show();
+            return false;
+        }
+
+        var str_1 = search.replace(/\s*/g,"");
+        if(str_1==''){
+            $("#content").text("请输入搜索关键字");
+            $("#myModal").show();
+            return false;
+        }
+        $('#have_search').submit();
+
+    }
+</script>
+<script type="text/javascript">
+
+    function logins() {
+        var username=$('input[name="username"]').val();
+        var password=$('input[name="password"]').val();
+        if(username==''){
+            $("#no_username").show();
+            return;
+
+        }
+
+        if(password==''){
+            $("#no_username").show();
+            return;
+        }
+        /*此处开始调用ajax传递值，进行登录验证*/
+
+        $.ajax({
+            type:'post',
+            url:"{:url('index/login/login')}",
+            data:$('form[name="login"]').serialize(),
+            dataType:"json",
+            async:false,
+            success:function(data){
+                if (data['status']==0){
+                    $("#no_username").text(data['msg']);
+                    $("#no_username").show();
+                }
+
+                if (data['status']==1){
+                    $("#no_username").text(data['msg']);
+                    $("#no_username").show();
+
+                    window.location.reload();
+                }
+
+            }
+        })
+    }
+
+
+    function registers() {
+        var usernames=$('input[name="usernames"]').val();
+        var passwords=$('input[name="passwords"]').val();
+        if(usernames==''){
+            $("#wrong_msg").show();
+            return;
+
+        }
+
+        if(passwords==''){
+            $("#wrong_msg").show();
+            return;
+        }
+        /*此处开始调用ajax传递值，进行登录验证*/
+
+        $.ajax({
+            type:'post',
+            url:"{:url('index/login/register')}",
+            data:$('form[name="register"]').serialize(),
+            dataType:"json",
+            async:false,
+            success:function(data){
+                if (data['status']==0){
+                    $("#wrong_msg").text(data['msg']);
+                    $("#wrong_msg").show();
+                    return;
+                }
+
+                if (data['status']==1){
+                    $("#wrong_msg").text(data['msg']);
+                    $("#wrong_msg").show();
+
+                    window.location.reload();
+                }
+
+            }
+        })
+    }
+
+    function login_out() {
+        $.ajax({
+            type:'post',
+            url:"{:url('index/login/loginouts')}",
+            data:{info:"out"},
+            dataType:"json",
+            async:false,
+            success:function(data){
+                if(data==1){
+                    //alert("这里是什么")
+                    window.location.reload();
+                }
+
+            }
+        })
+    }
+
+    function close_it() {
+        document.getElementById("myModal").style.display="none";
+    }
+
+
+</script>
+<script>
+    function toLogin()
+    {
+        alert(123);
+        //以下为按钮点击事件的逻辑。注意这里要重新打开窗口
+        //否则后面跳转到QQ登录，授权页面时会直接缩小当前浏览器的窗口，而不是打开新窗口
+        var A=window.open("oauth/index.php","TencentLogin",
+            "width=450,height=320,menubar=0,scrollbars=1,
+        resizable=1,status=1,titlebar=0,toolbar=0,location=1");
+    }
+</script>
+

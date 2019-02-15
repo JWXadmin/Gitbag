@@ -1,0 +1,214 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>小枯草-{$action}</title>
+<link rel="stylesheet" href="__STATIC__/new/css/base.css">
+<link rel="stylesheet" href="__STATIC__/new/css/style.css">
+</head>
+
+<body>
+{include file="public/header" /}
+
+<div class="content">
+    <div class="wrap">
+         <div class="tsm-height"></div>
+         <div class="account">
+                 <div class="account-title">账户设置</div>
+                 <div class="tsm-box">
+                      <div class="tsm-title">个人资料
+                      </div>
+                      <div class="tsm-a" style="display:block;">
+                                   <div class="tsm-a1">
+                                         <div class="tsm-a2 fl">用户名：</div>
+                                         <div class="tsm-a3"><input type="text" class="tsm-text1"></div>
+                                   </div>
+
+                                   <div class="tsm-a1">
+                                         <div class="tsm-a2 fl">性别：</div>
+                                         <div class="tsm-a4">
+                                             <input type="radio" checked="checked" name="Sex" value="男" >男
+                                             <span><input type="radio" name="Sex" value="女" />女</span>
+                                         </div>
+                                   </div>
+
+                                   <div class="tsm-a1">
+                                         <div class="tsm-a2 fl">职业：</div>
+                                         <div class="tsm-a3"><input type="text" class="tsm-text1"></div>
+                                   </div>
+
+                                   <div class="tsm-a1">
+                                         <div class="tsm-a2 fl">所在城市：</div>
+                                         <div class="tsm-a3"><input type="text" class="tsm-text1"></div>
+                                   </div>
+
+                                   <div class="tsm-a1">
+                                         <div class="tsm-a2 fl">生日：</div>
+                                         <div class="tsm-a3"><input type="text" class="tsm-text1"></div>
+                                   </div>
+                                   <div class="tsm-a1">
+                                         <div class="tsm-a2 fl">个人主页：</div>
+                                         <div class="tsm-a3"><input type="text" class="tsm-text1"></div>
+                                   </div>
+
+                                   <div class="tsm-a1">
+                                         <div class="tsm-a2 fl">个人主页：</div>
+                                         <div class="tsm-a5"><textarea class="tsm-area"></textarea></div>
+                                   </div>
+                        </div>
+                 </div>
+
+                 <div class="tsm-box">
+                      <div class="tsm-title">头像修改
+                      </div>
+                      <div class="tsm-b">
+                           <div id="preview" class="fl">
+                  <img id="imghead" width=122 height=122 border=0 src='<%=request.getContextPath()%>/images/defaul.jpg'>
+                           </div>
+                           <div class="tt-put fl">
+                                               <!--<input type="file" onchange="previewImage(this)" class="tt-btn"/>-->
+                                               <input type="button" class="tt-btn" value="上传图片"/>
+                                               <input type="button" class="tt-b" value="保存图片"></div>
+                      </div>
+                 </div>
+
+                  <div class="tsm-box">
+                      <div class="tsm-title">邮箱</div>
+                      <div class="tsm-a">
+                                   <div class="tsm-a1">
+                                         <div class="tsm-a2 fl">邮箱：</div>
+                                         <div class="tsm-c1">86745328@qq.com</div>
+                                   </div>
+
+                                   <div class="tsm-a1">
+                                         <div class="tsm-a2 fl">新邮箱：</div>
+                                         <div class="tsm-a3"><input type="text" class="tsm-text1"></div>
+                                   </div>
+                                   <div class="tsm-a1">
+                                         <div class="tsm-a2 fl">邮箱密码：</div>
+                                         <div class="tsm-a3"><input type="text" class="tsm-text1"></div>
+                                   </div>
+
+
+                        </div>
+                 </div>
+                 <div class="tsm-box">
+                      <div class="tsm-title">密码
+                      </div>
+                      <div class="tsm-a">
+                                   <div class="tsm-a1">
+                                         <div class="tsm-a2 fl">当前密码：</div>
+                                         <div class="tsm-a3"><input type="text" class="tsm-text1"></div>
+                                   </div>
+
+                                   <div class="tsm-a1">
+                                         <div class="tsm-a2 fl">新密码：</div>
+                                         <div class="tsm-a3"><input type="text" class="tsm-text1"></div>
+                                   </div>
+                                   <div class="tsm-a1">
+                                         <div class="tsm-a2 fl">确认密码：</div>
+                                         <div class="tsm-a3"><input type="text" class="tsm-text1"></div>
+                                   </div>
+
+
+                        </div>
+                 </div>
+
+                 <div class="tsm-box">
+                      <div class="tsm-title">关联账户</div>
+                      <div class="tsm-a">
+                                   <div class="tsm-a1">
+                                         <div class="tsm-a2 fl">微信：</div>
+                                         <div class="tsm-a3"><input type="text" class="tsm-text1"></div>
+                                   </div>
+
+                                   <div class="tsm-a1">
+                                         <div class="tsm-a2 fl">微博：</div>
+                                         <div class="tsm-a3"><input type="text" class="tsm-text1"></div>
+                                   </div>
+                                   <div class="tsm-a1">
+                                         <div class="tsm-a2 fl">QQ：</div>
+                                         <div class="tsm-a3"><input type="text" class="tsm-text1"></div>
+                                   </div>
+
+
+                        </div>
+                 </div>
+                 <div class="tsm-href"><input type="button" class="tsm-btn" value="保存"></div>
+
+         </div>
+    </div>
+
+</div>
+
+{include file="public/footer" /}
+
+<script src="__STATIC__/new/js/jquery-1.11.1.min.js"></script>
+<script src="__STATIC__/new/js/Action.js"></script>
+<script>
+$(".tsm-title").click(function(){
+	  $(this).toggleClass("tsm-t2").parent().siblings().find(".tsm-title").removeClass("tsm-t2"),
+	  $(this).next().slideToggle().parent().siblings().find(".tsm-a").slideUp()
+})
+</script>
+
+<!--<script type="text/javascript">
+                //图片上传预览    IE是用了滤镜。
+        function previewImage(file)
+        {
+          var MAXWIDTH  = 122; 
+          var MAXHEIGHT = 122;
+          var div = document.getElementById('preview');
+          if (file.files && file.files[0])
+          {
+              div.innerHTML ='<img id=imghead>';
+              var img = document.getElementById('imghead');
+              img.onload = function(){
+                var rect = clacImgZoomParam(MAXWIDTH, MAXHEIGHT, img.offsetWidth, img.offsetHeight);
+                img.width  =  rect.width;
+                img.height =  rect.height;
+//                 img.style.marginLeft = rect.left+'px';
+                img.style.marginTop = rect.top+'px';
+              }
+              var reader = new FileReader();
+              reader.onload = function(evt){img.src = evt.target.result;}
+              reader.readAsDataURL(file.files[0]);
+          }
+          else //兼容IE
+          {
+            var sFilter='filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale,src="';
+            file.select();
+            var src = document.selection.createRange().text;
+            div.innerHTML = '<img id=imghead>';
+            var img = document.getElementById('imghead');
+            img.filters.item('DXImageTransform.Microsoft.AlphaImageLoader').src = src;
+            var rect = clacImgZoomParam(MAXWIDTH, MAXHEIGHT, img.offsetWidth, img.offsetHeight);
+            status =('rect:'+rect.top+','+rect.left+','+rect.width+','+rect.height);
+            div.innerHTML = "<div id=divhead style='width:"+rect.width+"px;height:"+rect.height+"px;margin-top:"+rect.top+"px;"+sFilter+src+"\"'></div>";
+          }
+        }
+        function clacImgZoomParam( maxWidth, maxHeight, width, height ){
+            var param = {top:0, left:0, width:width, height:height};
+            if( width>maxWidth || height>maxHeight )
+            {
+                rateWidth = width / maxWidth;
+                rateHeight = height / maxHeight;
+                 
+                if( rateWidth > rateHeight )
+                {
+                    param.width =  maxWidth;
+                    param.height = Math.round(height / rateWidth);
+                }else
+                {
+                    param.width = Math.round(width / rateHeight);
+                    param.height = maxHeight;
+                }
+            }
+             
+            param.left = Math.round((maxWidth - param.width) / 2);
+            param.top = Math.round((maxHeight - param.height) / 2);
+            return param;
+        }
+</script> -->
+</body>
+</html>

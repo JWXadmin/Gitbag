@@ -1,0 +1,112 @@
+<!DOCTYPE html >
+<html >
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>小枯草-{$action}</title>
+    <link rel="stylesheet" href="__STATIC__/new/css/base.css">
+    <link rel="stylesheet" href="__STATIC__/new/css/style.css">
+</head>
+
+<body>
+{include file="public/header" /}
+
+
+<div class="content">
+    <div class="wrap">
+        <div class="tsm-height"></div>
+        <div class="act-banner">
+            <div class="hd">
+                <ul>
+                    <li style="background:url(__STATIC__/new/upload/travel.jpg) no-repeat center center;height:315px"></li>
+                    <li style="background:url(__STATIC__/new/upload/travel1.jpg) no-repeat center center;height:315px"></li>
+                </ul>
+            </div>
+            <div class="bd"><ul></ul></div>
+        </div>
+
+        <div class="act-a">
+
+            <div class="act-a1 mr-20 fl">
+                <div class="act-a-img"><img src="{$hot_actives[0]['thumb']}" width="486" height="295">
+                    <div class="inside"><div class="ins-a"><a href="{:url('index/active/active_details',array('active_id'=>$hot_actives[0]['active_id']))}">查看</a></div></div>
+                </div>
+                <div class="act-a2">{$hot_actives[0]['active_name']}</div>
+
+            </div>
+
+            <div class="act-a1 fl">
+                <div class="act-a-img"><img src="{$hot_actives[1]['thumb']}" width="486" height="295">
+                    <div class="inside"><div class="ins-a"><a href="{:url('index/active/active_details',array('active_id'=>$hot_actives[1]['active_id']))}">查看</a></div></div>
+                </div>
+                <div class="act-a2">{$hot_actives[1]['active_name']}</div>
+
+            </div>
+
+        </div>
+        <div class="act-b">
+            <ul class="act-ul">
+
+                {empty name="actives" }
+                暂无数据！
+                {else/}
+                {volist name="actives" id="v" key="k"}
+                <a href="{:url('index/active/active_details',array('active_id'=>$v['active_id']))}"><li>
+                    <div class="act-b1"><img src="{$v['thumb']}" width="318" height="200"></div>
+                   <!-- <div class="act-b1"><img src="__STATIC__/new/upload/act-b3.jpg"></div>-->
+                    <div class="act-a2">{$v['active_name']}</div>
+                </li></a>
+                {/volist}
+                {/empty}
+
+            </ul>
+
+            {$actives->render()}
+        </div>
+
+
+    </div>
+</div>
+
+{include file="public/footer" /}
+
+
+<script src="__STATIC__/new/js/jquery-1.11.1.min.js"></script>
+<script src="__STATIC__/new/js/Action.js"></script>
+<script src="__STATIC__/new/js/jquery.SuperSlide.2.1.1.js"></script>
+<script>
+    $(".act-banner").slide({
+        titCell: ".bd ul" ,
+        mainCell:".hd ul" ,
+        effect:"fold",
+        autoPlay:true,
+        autoPage: true,
+        mouseOverStop:false,
+        trigger: "click",
+        delayTime: 500,
+        interTime: 3000,
+        startFun: function (i) {
+            var curLi = jQuery(".act-banner .bd li").eq(i);
+            if (!!curLi.attr("_src")) {
+                curLi.css("background-image", curLi.attr("_src")).removeAttr("_src")
+            }
+        }
+    })
+</script>
+
+<script>
+    $(".act-a-img").hover(function(){
+        $(this).find(".inside").stop(true,true).animate({top:0},500);
+    },function(){
+        $(this).find(".inside").stop(true,true).animate({top:295},500);
+    });
+</script>
+
+<script>
+    $(".page a").click(function(){
+        $(this).addClass("page-cut").siblings().removeClass("page-cut")
+
+    })
+</script>
+
+</body>
+</html>

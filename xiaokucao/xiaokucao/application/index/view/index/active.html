@@ -1,0 +1,166 @@
+<!DOCTYPE html >
+<html >
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>小枯草-{$action}</title>
+<link rel="stylesheet" href="__STATIC__/new/css/base.css">
+<link rel="stylesheet" href="__STATIC__/new/css/style.css">
+</head>
+
+<body>
+{include file="public/header" /}
+
+
+<div class="content">
+    <div class="wrap">
+         <div class="tsm-height"></div>
+         <div class="act-banner">
+                 <div class="hd">
+                      <ul><li style="background:url(__STATIC__/new/upload/act-banner.jpg) no-repeat center center;height:315px"></li>
+                          <li style="background:url(__STATIC__/new/upload/act-banner.jpg) no-repeat center center;height:315px"></li></ul>
+                 </div>
+                 <div class="bd"><ul></ul></div>      
+           </div>
+           
+           <div class="act-a">
+                 <div class="act-a1 mr-20 fl">
+                           <div class="act-a-img"><img src="__STATIC__/new/upload/act-a1.jpg">
+                                                  <div class="inside"><div class="ins-a"><a href="">查看</a></div></div>
+                           </div>
+                           <div class="act-a2">活动主题</div>
+                           
+                 </div>
+                 
+                 <div class="act-a1 fl">
+                           <div class="act-a-img"><img src="__STATIC__/new/upload/act-a2.jpg">
+                                                 <div class="inside"><div class="ins-a"><a href="">查看</a></div></div>
+                           </div>
+                           <div class="act-a2">活动主题</div>
+                           
+                 </div>
+           
+           </div>
+           <div class="act-b">
+                 <ul class="act-ul">
+                      <a href=""><li>
+                          <div class="act-b1"><img src="__STATIC__/new/upload/act-b1.jpg"></div>
+                          <div class="act-a2">活动主题</div>
+                      </li></a>
+                      
+                      <a href=""><li>
+                          <div class="act-b1"><img src="__STATIC__/new/upload/act-b2.jpg"></div>
+                          <div class="act-a2">活动主题</div>
+                      </li></a>
+                      
+                      <a href=""><li>
+                          <div class="act-b1"><img src="__STATIC__/new/upload/act-b3.jpg"></div>
+                          <div class="act-a2">活动主题</div>
+                      </li></a>
+                      
+                      <a href=""><li>
+                          <div class="act-b1"><img src="__STATIC__/new/upload/act-b1.jpg"></div>
+                          <div class="act-a2">活动主题</div>
+                      </li></a>
+                      
+                      <a href=""><li>
+                          <div class="act-b1"><img src="__STATIC__/new/upload/act-b2.jpg"></div>
+                          <div class="act-a2">活动主题</div>
+                      </li></a>
+                      
+                      <a href=""><li>
+                          <div class="act-b1"><img src="__STATIC__/new/upload/act-b3.jpg"></div>
+                          <div class="act-a2">活动主题</div>
+                      </li></a>
+                      
+                 </ul>
+           </div>
+           
+           <div class="act-a">
+                 <div class="act-a1 mr-20 fl">
+                           <div class="act-a-img"><img src="__STATIC__/new/upload/act-a1.jpg">
+                                                  <div class="inside"><div class="ins-a"><a href="">查看</a></div></div>
+                           </div>
+                           <div class="act-a2">活动主题</div>
+                           
+                 </div>
+                 
+                 <div class="act-a1 fl">
+                           <div class="act-a-img"><img src="__STATIC__/new/upload/act-a2.jpg">
+                                                 <div class="inside"><div class="ins-a"><a href="">查看</a></div></div>
+                           </div>
+                           <div class="act-a2">活动主题</div>
+                           
+                 </div>
+           
+           </div>
+           
+           <div class="act-b">
+                 <ul class="act-ul">
+                      <a href=""><li>
+                          <div class="act-b1"><img src="__STATIC__/new/upload/act-b1.jpg"></div>
+                          <div class="act-a2">活动主题</div>
+                      </li></a>
+                      
+                      <a href=""><li>
+                          <div class="act-b1"><img src="__STATIC__/new/upload/act-b2.jpg"></div>
+                          <div class="act-a2">活动主题</div>
+                      </li></a>
+                      
+                      <a href=""><li>
+                          <div class="act-b1"><img src="__STATIC__/new/upload/act-b3.jpg"></div>
+                          <div class="act-a2">活动主题</div>
+                      </li></a>
+                 </ul>
+           </div>
+           
+            <div class="page m-48">
+                         <a href="" class="page-cut">1</a>
+                         <a href="">2</a>
+                         <a href="">》</a>
+            </div>
+            
+            <div class="act-e"><a href=""><img src="__STATIC__/new/upload/act-f.jpg"></a></div>
+    </div> 
+</div>
+
+{include file="public/footer" /}
+
+
+<script src="__STATIC__/new/js/jquery-1.11.1.min.js"></script>
+<script src="__STATIC__/new/js/Action.js"></script>
+<script src="__STATIC__/new/js/jquery.SuperSlide.2.1.1.js"></script>
+<script>
+   $(".act-banner").slide({
+		    titCell: ".bd ul" , 
+		    mainCell:".hd ul" , 
+	        effect:"fold", 
+	        autoPlay:true,
+	        autoPage: true, 
+		    mouseOverStop:false,
+ 		    trigger: "click",
+		    startFun: function (i) {
+                    var curLi = jQuery(".act-banner .bd li").eq(i);
+                    if (!!curLi.attr("_src")) {
+                        curLi.css("background-image", curLi.attr("_src")).removeAttr("_src")
+                    }
+                }
+		 })	
+</script>
+
+<script>
+$(".act-a-img").hover(function(){
+		$(this).find(".inside").stop(true,true).animate({top:0},500);
+		},function(){
+	        $(this).find(".inside").stop(true,true).animate({top:295},500);
+		});	
+</script>
+
+<script>
+  $(".page a").click(function(){
+	  $(this).addClass("page-cut").siblings().removeClass("page-cut")  
+	  
+	})
+</script>
+
+</body>
+</html>

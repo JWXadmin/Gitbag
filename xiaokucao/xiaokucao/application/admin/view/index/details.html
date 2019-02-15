@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <include file="Public:head"/>
+    <link href="__PUBLIC__/Admin/css/plugins/treeview/bootstrap-treeview.css" rel="stylesheet">
+    <script src="__PUBLIC__/Admin/js/plugins/treeview/bootstrap-treeview.js"></script>
+    <script src="__PUBLIC__/Admin/js/demo/treeview-demo.js"></script>
+</head>
+<body class="gray-bg">
+<div class="wrapper wrapper-content animated fadeInRightBig">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="ibox">
+                <div class="ibox-title">
+                    <h5>订单列表</h5>
+                    <div class="ibox-tools" style="float:left;margin:0 20px">
+						<form  id="f2" method="get" action="{:U('Index/details')}"  style="height:30px;">
+                            <input type="text" name="time" id="start" style="margin:0 10px"placeholder="填写开始时间">
+                            <input type="text" name="endtime" id="end" style="margin:0 10px"placeholder="填写结束时间">
+							<input type="buttom"  value="查询" style="margin:0 10px ;width:50px" id="serchf" class="btn btn-primary btn-xs" >
+						</form></div>
+
+                </div>
+                <div class="ibox-content">
+                    <table class="table table-striped table-hover no-margin">
+                        <thead>
+                        <tr>
+                            <th width="30%" class="text-center">时间</th>
+                            <th width="15%" class="text-center">新增用户</th>
+                            <th width="10%" class="text-center">充值金额</th>
+                            <th width="10%" class="text-center">丢失订单</th>
+                            <th width="17%" class="text-center">超时订单</th>
+                            <!--<th width="17%" class="text-center">完成订单</th>-->
+                            <th width="17%" class="text-center">订单支付金额</th>
+                            <!--<th width="17%" class="text-center">押金状态</th>-->
+                             <!--<th width="17%" class="text-center">状态修改</th>-->
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <empty name="arr">
+                            <tr>
+                                <td colspan="8" class="text-center">暂无订单数据</td>
+                            </tr>
+                            <else/>
+                            <volist name="arr" id="v" key="k">
+                                <tr>
+                                    <td class="text-center">{$v.time}</td>
+                                    <td class="text-center">{$v.user}</td>
+                                     <td class="text-center">
+                                         {$v.recharge|default="0.00"}
+                                    </td>
+                                    <td class="text-center">{$v.lose}</td>
+                                    <td class="text-center">
+                                        {$v.chaoshi}
+                                    </td>
+                                    <td class="text-center">
+                                        {$v.order_money|default="0.00"}
+                                    </td>
+                                </tr>
+                            </volist>
+                        </empty>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="container-fluid text-center">
+                    {$page}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<include file="Public:footer"/>
+</body>
+
+<div class="modal fade" id="myModal" aria-hidden="true"
+     style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content animated bounceInRight">
+            <div class="modal-header"></div>
+            <div class="modal-body"></div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $("#myModal").on("hidden.bs.modal", function () {
+        $(this).removeData("bs.modal");
+    });
+    $('#serchf').click(function () {
+        $('#f2').submit();
+    });
+    $('#serchf1').click(function () {
+        $('#f3').submit();
+    });
+    var start = {
+        elem: "#start",
+        format: "YYYY/MM/DD hh:mm:ss",
+        min: "1900-01-01 00:00:00",
+        max: "2099-06-16 23:59:59",
+        istime: true,
+        istoday: false,
+        choose: function (datas) {
+            end.min = datas;
+            end.start = datas
+        }
+    };
+    var end = {
+        elem: "#end",
+        format: "YYYY/MM/DD hh:mm:ss",
+        min: "1900-01-01 00:00:00",
+        max: "2099-06-16 23:59:59",
+        istime: true,
+        istoday: false,
+        choose: function (datas) {
+            start.max = datas
+        }
+    };
+    laydate(start);
+    laydate(end);
+
+    $("#serchf").click(function(){
+        var s = $("#start").val();
+        var e = $("#end").val();
+        if (!s){
+            alert("请输入开始时间");
+            return false;
+        }
+        if (!e){
+            alert("请输入结束时间");
+            return false;
+        }
+    })
+</script>
+</html>

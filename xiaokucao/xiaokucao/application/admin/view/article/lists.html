@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {include file="public:head"/}
+    <link href="__STATIC__/admin/css/plugins/treeview/bootstrap-treeview.css" rel="stylesheet">
+    <script src="__STATIC__/admin/js/plugins/treeview/bootstrap-treeview.js"></script>
+    <script src="__STATIC__/admin/js/demo/treeview-demo.js"></script>
+</head>
+<body>
+<div class="wrapper wrapper-content animated fadeInRightBig">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="ibox">
+                <div class="ibox-title">
+                    <h5>文章管理列表</h5>
+                    <div class="ibox-tools" style="float:left;margin:0 20px">
+                        <input type="button" value="添加文章" style="margin:0 10px ;width: 60px;" onclick="go_next()" class="btn btn-primary btn-xs">
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <table class="table table-striped table-hover no-margin">
+                        <thead>
+                        <tr>
+                            <th width="3%" class="text-center">ID</th>
+                            <th width="15%" class="text-center">标题</th>
+                            <th width="10%" class="text-center">作者</th>
+                            <th width="17%" class="text-center">日期</th>
+                            <th width="17%" class="text-center">分类</th>
+                            <th width="17%" class="text-center">状态</th>
+                            <th width="8%" class="text-center">点击量</th>
+                            <th width="17%" class="text-center">操作</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {empty name="articles"}
+                        <tr>
+                            <td colspan="8" class="text-center">暂无数据</td>
+                        </tr>
+                        {else/}
+                        {volist name="articles" id="v" key="k"}
+                        <tr>
+                            <td class="text-center">{$v.article_id}</td>
+                            <td class="text-center">{$v.title}</td>
+                            <td class="text-center">{$v.author}</td>
+                            <td class="text-center">{$v.date|date="Y-m-d H:i:s",###}</td>
+                            <td class="text-center">{$v.cate_name}</td>
+                            <td class="text-center">
+
+                                {if condition="$v.status eq 1"}
+                                <a href="{:url('article/article_status',array('article_id'=>$v.article_id,'status'=>0))}"
+                                   class="label label-primary set"
+                                   onclick="return confirm('隐藏？')">显示</a>
+                                {else/}
+                                <a href="{:url('article/article_status',array('article_id'=>$v.article_id,'status'=>1))}"
+                                   class="label label-danger set"
+                                   onclick="return confirm('显示？')">隐藏</a>
+                                {/if}
+
+
+                            </td>
+                            <td class="text-center">{$v.hits}</td>
+                            <td class="text-center">
+
+                                <a href="{$v['link']}" class="label label-primary set" target="_blank">阅读</a>
+                                <!--<a href="{:url('article/delete',array('article_id'=>$v['article_id']))}"
+                                class="label label-primary set" onclick="return confirm('删除？')">删除</a>-->
+                            </td>
+
+                        </tr>
+                        {/volist}
+                        {/empty}
+                        </tbody>
+                    </table>
+                </div>
+                <div class="container-fluid text-center">
+                    {$articles->render()}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    function go_next() {
+        window.location.href="{:url('admin/article/add')}"
+    }
+</script>
+{include file="public:footer"/}
+</body>
+</html>

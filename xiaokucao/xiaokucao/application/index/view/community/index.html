@@ -1,0 +1,184 @@
+<!DOCTYPE html >
+<html >
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>小枯草-{$action}</title>
+    <link rel="stylesheet" href="__STATIC__/new/css/base.css">
+    <link rel="stylesheet" href="__STATIC__/new/css/style.css">
+</head>
+
+<body>
+{include file="public/header" /}
+
+<div class="content">
+    <div class="wrap">
+        <div class="art-height"></div>
+        <div class="community">
+            <div class="com-fl fl">
+                <div class="hd">
+                    <ul>
+                        {notempty name="lunbos"}
+                        {volist name="lunbos" id="v" key="k"}
+
+                        <li style="background:url({$v['thumb']}) no-repeat center center;height:289px"></li>
+                        {/volist}
+                        {/notempty}
+
+                    </ul>
+                </div>
+                <div class="bd"><ul></ul></div>
+            </div>
+
+            <div class="com-fr fr">
+                <div class="com-a">
+                    <div class="com-a1">本站视频均来自于网络，如有侵权，请联系本人</div>
+                    <div class="com-a2">本站视频均来自于网络，如有侵权，请联系本人<a href="http://www.xiaokucao.com/index/contact/index.html">[联系我]</a></div>
+                </div>
+                <div class="com-b">
+                    {notempty name="ten_videos"}
+                    {volist name="ten_videos" id="v" key="k"}
+                    <div class="com-b1"><a href="{:url('index/community/community_post',array('video_id'=>$v['video_id']))}">{$v['video_name']}[{$v['comments_num']}次回复 / {$v['hits']}次浏览]</a><span>{$v['author']}</span></div>
+                    {/volist}
+                    {/notempty}
+
+                </div>
+            </div>
+        </div>
+
+        <div class="ru">
+            <div class="ru-fl fl">
+                <div class="ru-a">
+                    <div class="ru-title">
+                        <div class="cou-b1"><img src="__STATIC__/new/images/cou-b1.jpg">热门视频</div>
+                        <div class="ru-a1">
+                            <!--<div class="sort">排序</div>-->
+                        </div>
+                        <div class="ru-a2">
+                            <div class="dropdown">
+                                <span>全部</span>
+                                <ul data-value="" class="droplist">
+                                    <li data-id="1">情感</li>
+                                    <li data-id="2">服饰</li>
+                                    <li data-id="3">最新</li>
+                                    <li data-id="4">提问</li>
+                                    <li data-id="5">约会技巧</li>
+                                    <li data-id="6">热门文章</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ru-b">
+                    <ul>
+                        {empty name="videos"}
+                        暂无视频！
+                        {else/}
+                        {volist name="videos" id="v" key="k"}
+                        <a href="{:url('index/community/community_post',array('video_id'=>$v['video_id']))}">
+                            <li>
+                                <div class="wt-fl fl">
+                                    <div class="wt-a1"><img src="__STATIC__/new/upload/video1.jpg"></div>
+                                    <div class="wt-a2">{$v['author']}</div>
+                                </div>
+                                <div class="wt-fr fl">
+                                    <!--<div class="wt-r1"><span>视频分类</span>{$v['cate_name']}<em>New</em></div>-->
+                                    <div class="wt-r1"><span>{$v['video_name']}</span></div>
+                                    <div class="wt-r2">评论（{$v['comments_num']}） 丨  阅读（{$v['hits']}） 丨  2015-11-02  14：43</div>
+
+                                </div>
+                            </li>
+                        </a>
+                        {/volist}
+                        {/empty}
+
+                    </ul>
+                    {$videos->render()}
+                    <!--<div class="skt-more com-more"><a href="{:url('index/community/community_post')}">查看更多</a></div>-->
+                </div>
+            </div><!--ru-fl-->
+
+            <div class="ru-fr fr">
+                <div class="ru-c1" onclick="goto()">发表帖子</div>
+               <!-- <div class="ru-c2"><img src="__STATIC__/new/images/cou-b1.jpg">热门标签</div>
+                <div class="ru-c3">
+                    <span>恋爱</span>
+                    <span>型男</span>
+                    <span>美女</span>
+                    <span>矛盾</span>
+                    <span>矛盾</span>
+                    <span>恋爱</span>
+                    <span>型男</span>
+                    <span>美女</span>
+                </div>-->
+                <div class="ru-c2"><img src="__STATIC__/new/images/cou-b1.jpg">热门文章</div>
+                <div class="ru-c4">
+                    {empty name="four"}
+                    暂无
+                    {else/}
+                    {volist name="four" id="v" key="k"}
+                    <a href="{:url('index/article/article_details',array('article_id'=>$v['article_id']))}">
+                    <div class="ru-c5">
+                        <div class="ru-d fl">热</div>
+                        <div class="ru-e fl">
+                            <div class="ru-e1">{$v['title']}</div>
+                            <div class="ru-e2"><img src="__STATIC__/new/upload/xiaohai.jpg">{$v['author']}<span style="margin-right: 0;float: right">{$v['date']|date="Y-m-d",###}</span></div>
+                        </div>
+                    </div>
+                    </a>
+                    {/volist}
+                    {/empty}
+
+                </div>
+                <div class="ru-c6"><a href="{:url('index/community/community_post')}"><img src="__STATIC__/new/upload/ru-c1.png"></a></div>
+            </div>
+        </div><!--ru-->
+    </div>
+</div>
+
+
+
+
+<script src="__STATIC__/new/js/jquery-1.11.1.min.js"></script>
+<script src="__STATIC__/new/js/Action.js"></script>
+<script src="__STATIC__/new/js/jquery.SuperSlide.2.1.1.js"></script>
+<script>
+    $(".com-fl").slide({
+        titCell: ".bd ul" ,
+        mainCell:".hd ul" ,
+        effect:"fold",
+        autoPlay:true,
+        autoPage: true,
+        mouseOverStop:false,
+        trigger: "click",
+        startFun: function (i) {
+            var curLi = jQuery(".com-fl .bd li").eq(i);
+            if (!!curLi.attr("_src")) {
+                curLi.css("background-image", curLi.attr("_src")).removeAttr("_src")
+            }
+        }
+    })
+</script>
+<script>
+    $(".sort").click(function(){
+        $(this).toggleClass("sort-cut")
+    })
+    function goto() {
+        window.location.href="{:url('index/course/make_course')}"
+    }
+</script>
+<script>
+    $(".dropdown").bind({
+        click: function () {
+            $(this).find(".droplist").stop().slideDown();
+        },
+        mouseleave: function () {
+            $(this).find(".droplist").hide();
+        }
+    });
+    $(".dropdown .droplist li").click(function () {
+        $(this).parents(".dropdown").children("span").text($(this).text());
+        $(this).parents(".droplist").hide().attr("data-value", $(this).attr("data-id"));
+    });
+</script>
+</body>
+</html>

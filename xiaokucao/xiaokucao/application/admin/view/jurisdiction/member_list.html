@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {include file="public:head"/}
+    <link href="__STATIC__/admin/css/plugins/treeview/bootstrap-treeview.css" rel="stylesheet">
+    <script src="__STATIC__/admin/js/plugins/treeview/bootstrap-treeview.js"></script>
+    <script src="__STATIC__/admin/js/demo/treeview-demo.js"></script>
+</head>
+<body class="gray-bg">
+<div class="wrapper wrapper-content animated fadeInRightBig">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="ibox">
+                <div class="ibox-title">
+                    <h5>角色列表</h5>
+                    <div class="ibox-tools" style="float:left;margin:0 20px">
+                        <input type="button" value="添加管理员" style="margin:0 10px ;width: 100px;" id="adduser" class="btn btn-primary btn-xs">
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <table class="table table-striped table-hover no-margin">
+                        <thead>
+                        <tr>
+                            <th width="3%" class="text-center">ID</th>
+                            <th width="15%" class="text-center">管理员名称</th>
+                            <th width="15%" class="text-center">登录名</th>
+                            <th width="10%" class="text-center">权限</th>
+                            <th width="10%" class="text-center">添加时间</th>
+                            <th width="17%" class="text-center">操作</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {empty name="orderlist"}
+                            <tr>
+                                <td colspan="8" class="text-center">暂无数据</td>
+                            </tr>
+                            {else/}
+                            {volist name="orderlist" id="v" key="k"}
+                                <tr>
+                                    <td class="text-center">{$k}</td>
+                                    <td class="text-center">{$v.nikename}</td>
+                                    <td class="text-center">{$v.uname}</td>
+                                    <td class="text-center">
+                                        {$v.title}
+                                    </td>
+                                    <td class="text-center">{$v.createtime|date='Y-m-d H:i:s',###}</td>
+                                    <td class="text-center">
+                                            <a href="{:url('Jurisdiction/editmember',array('id'=>$v['id']))}"
+                                               class="label label-primary set">编辑</a>
+                                            <a href="{:url('Jurisdiction/delete_member',array('id'=>$v['id']))}"
+                                               class="label label-primary set" onclick="return confirm('删除？')">删除</a>
+
+                                    </td>
+
+                                </tr>
+                            {/volist}
+                        {/empty}
+                        </tbody>
+                    </table>
+                </div>
+                <div class="container-fluid text-center">
+                    {$orderlist->render()}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{include file="public:footer"/}
+</body>
+
+<div class="modal fade" id="myModal" aria-hidden="true"
+     style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content animated bounceInRight">
+            <div class="modal-header"></div>
+            <div class="modal-body"></div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $("#myModal").on("hidden.bs.modal", function () {
+        $(this).removeData("bs.modal");
+    });
+    $('#serchf').click(function () {
+        $('#f2').submit();
+    });
+
+
+    $("#adduser").click(function () {
+        window.location.href = "{:url('Jurisdiction/addmember')}";
+    })
+</script>
+</html>

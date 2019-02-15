@@ -1,0 +1,133 @@
+<!DOCTYPE html >
+<html >
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>小枯草-搜索</title>
+    <link rel="stylesheet" href="__STATIC__/new/css/base.css">
+    <link rel="stylesheet" href="__STATIC__/new/css/style.css">
+</head>
+
+<body>
+{include file="public/header" /}
+
+<div class="content">
+    <div class="wrap">
+        <div class="art-height"></div>
+        <div class="art-box">
+
+
+            </div>
+
+            <div class="art-c">
+                <div class="cont-b fl" style="margin: 50px">
+                    <div class="cont-b1">
+                        <form action="{:url('index/index/search')}" method="post" id="have_search">
+                            <input type="text" id="search" class="cont-text fl" name="search" value="" placeholder="请输入搜索关键字">
+                            <input type="button" class="cont-btn fl" onclick="search_1()"  >
+                        </form>
+                    </div>
+
+                </div>
+                <div class="art-fl fl">
+
+                    <div class="tjk">
+                        <ul class="art-ul">
+                            {empty name="articles"}
+                            <h4 style="font-size: 20px;color: black">暂无数据！</h4>
+                            {else/}
+                            {volist name="articles" id="v" key="k"}
+                            <a href="{$v['link']}">
+                                <li>
+                                    <div class="art-list">
+                                        <div class="art-d fl">
+                                            {if condition="$v.thumb"}
+                                            <img src="{$v.thumb}" style="width: 194px;height: 121px">
+                                            {/if}
+                                        </div>
+                                        <div class="art-e fl">
+
+                                            <div class="col-b1">
+                                                <?php
+                                                $str=str_replace($where, "<span style=\"color: red\">$where</span>", $v['title']);
+                                                 print_r($str);
+                                                ?>
+
+                                            </div>
+                                            <div class="col-b2">{$v['author']}<span>{$v['date']|date="Y-m-d",###}</span></div>
+                                            <div class="col-b3">{$v['title']}</div>
+                                        </div>
+                                        <div class="art-f">
+                                            <span><img src="__STATIC__/new/images/col-c1.jpg">0</span>
+                                            <span><img src="__STATIC__/new/images/col-c2.jpg">{$v['hits']}</span>
+                                            <em><img src="__STATIC__/new/images/col-c3.jpg"></em>
+                                            <em><img src="__STATIC__/new/images/col-c4.jpg"></em>
+                                            <em><img src="__STATIC__/new/images/col-c5.jpg"></em>
+                                        </div>
+                                    </div>
+                                    <div class="art-g">
+                                    </div>
+                                </li>
+                            </a>
+                            {/volist}
+                            {/empty}
+
+                        </ul>
+                    </div>
+
+                    <!--<div class="more"><a href="{:url('index/article/article_details')}">查看更多>></a></div>-->
+
+                </div>
+
+                <div class="art-fr fr">
+                    <div class="post-y art-gg">
+                        <div class="post-y1"><img src="__STATIC__/new/images/cou-b1.jpg">最新文章</div>
+                        <ul>
+                            {volist name="four" id="v" key="k"}
+
+                            <a href="{:url('index/article/article_details',array('article_id'=>$v['article_id']))}"><li>
+                                <div class="post-y2"><img src="{$v['thumb']}" style="width: 248px;height: 139px"></div>
+                                <div class="post-y3">{$v['title']}</div>
+
+                            </li></a>
+
+                            {/volist}
+
+
+                        </ul>
+                    </div>
+
+                </div>
+            </div><!--art-c-->
+
+        </div>
+    </div>
+</div>
+
+{include file="public/footer" /}
+
+
+<script src="__STATIC__/new/js/jquery-1.11.1.min.js"></script>
+<script src="__STATIC__/new/js/Action.js"></script>
+<script>
+    $(".sort").click(function(){
+        $(this).toggleClass("sort-cut")
+    })
+</script>
+<script>
+    $(".dropdown").bind({
+        click: function () {
+            $(this).find(".droplist").stop().slideDown();
+        },
+        mouseleave: function () {
+            $(this).find(".droplist").hide();
+        }
+    });
+    $(".dropdown .droplist li").click(function () {
+        $(this).parents(".dropdown").children("span").text($(this).text());
+        $(this).parents(".droplist").hide().attr("data-value", $(this).attr("data-id"));
+    });
+</script>
+
+</body>
+</html>
+
